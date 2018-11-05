@@ -37,7 +37,7 @@ body{
 }
 
 .container > #right{
-    width:40%;
+    width:50%;
     height: 100%;
     float:right;
 }
@@ -84,9 +84,13 @@ body{
 
 #about > #about-s >hr{
     position: absolute;
-    right:4.5%;
+    right:5.2%;
     border:4 solid white;
-    width: 12%;
+    width: 15%;
     margin-top:-2.5%;
+}
+
+.signin{
+    margin:0 auto;
 }
 
