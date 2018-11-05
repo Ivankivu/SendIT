@@ -10,28 +10,13 @@ body{
     height: 100%;
 }
 
-/* .topbar{
-    display: flex;
-    flex-direction: row;
-    width:100%;
-    height: 7%;
-    background-color: blue;
-} */
-
 .container > #left{
     background-color:blue;
     height: 100%;
     float:left;
 }
-/* .container > #left >  #image{
-    display: flex;
-    flex-direction: row;
-    margin: 10% 0% 0% 0%;
-    /* margin: 0 auto; */
-    /* justify-content:center; */
-/* }  */
+
 .container > #left > img{
-    /* margin: 0% 0% 0% 0%; */
     width: 100%;
     height: 100%;
 }
@@ -46,7 +31,6 @@ body{
     display: flex;
     flex-direction: column;
     padding:0% 6% 0% 6%;
-    /* height:100%; */
     top:0;
 }
 
@@ -54,7 +38,6 @@ body{
     display: flex;
     flex-direction: row;
     margin: 6% 0% 0% 0%;
-    /* margin: 0 auto; */
     justify-content:center;
 }
 .container > #right > #sidebar >  h3{
@@ -62,8 +45,8 @@ body{
     text-align: center;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 300%;
-
 }
+
 .container > #right > #sidebar > form{
     display: flex;
     flex-direction: column;
