@@ -17,16 +17,25 @@
             <a href="home.html"><img src="/UI/img/icons8-in-transit-80.png" /></a>
         </div>
         <ul>
-            <li><a href="#">Tracking</a></li>
+            <li><a href="home.html">Tracking</a></li>
             <li class="dropdown dropbtn" onclick="myFunction()">
-                <a href="#" >Shipping</a>
+                <a href="#">Shipping</a>
                 <div class="dropdown-content" id="myDropdown">
                     <ul>
                         <li><a href="send_a_parcel.html">New Shipment</a></li>
+                        <li><a href="shippinghistory.html">Shipping History</a></li>
                     </ul>
                 </div>
             </li>
-            <li><a href="#">My Account</a></li>
+            <li class="dropdown dropbtn" onclick="upFunction()">
+                <a href="#">My Account</a>
+                <div class="dropdown-content" id="myDropup">
+                    <ul>
+                        <li><a href="#">Profile</a></li>
+                        <li><a href="#">Logout</a></li>
+                    </ul>
+                </div>
+            </li>
         </ul>
     </div>
 
