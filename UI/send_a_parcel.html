@@ -12,111 +12,112 @@
 </head>
 
 <body>
-        <div class="topbar">
-                <div>
-                    <img src="/UI/img/icons8-in-transit-80.png"/>
-                </div>
-                <ul>
-                    <li><a href="#">Tracking</a></li>
-                    <li class="dropdown" onclick="myFunction()"><a href="#" class="dropbtn">New Shipping</a>
-                        <div class="dropdown-content" id="myDropdown">
-                        <ul>
-                            <li><a href="send_a_parcel.html">Create a Shipment</a></li>
-                        </ul>
-                    </div>
-                    </li>
-                </ul>
-            </div>        
-
-        <div class="content">
-            <!-- <h2>Create a Parcel Delivery Order</h2> -->
-            <div class="ship">
-                <form>
-                        <h3>Sender *</h3>
-                        <hr>
-                    <select>
-                        <option>Select Country</option>
-                        <option>America</option>
-                        <option>Uganda</option>
-                        <option>Kenya</option>
-                        <option>China</option>
-                        <option>Sudan</option>
-                        <option>Denmark</option>
-                        <option>German</option>
-                    </select>
-                    <div>
-                        <input type="text" placeholder="Parcel name">
-                        <select>
-                                <option>Select Category</option>
-                                <option>Perishable</option>
-                                <option>Fragile</option>
-                                <option>Hazardrous</option>
-                                <option>Weapons</option>
-                                <option>Solvets</option>
-                            </select>
-                    </div>
-                    <input type="text" placeholder="Full names">
-                    <input type="text" placeholder="Address">
-                    <input type="text" placeholder="suite, Building">
-                    <div>
-                            <input type="text" placeholder="city">
-                            <input type="tel" placeholder="Postal code">
-                        </div>
-                        
-                        <div>
-                                <input type="email" placeholder="Email">
-                                <input type="tel" placeholder="Contact">
-                            </div>
-                            
-                </form>
-            </div>
-
-            <div class="shipto">
-                    
-                    <form>
-                            <h3>Receiver *</h3>
-                            <hr>
-                        <select>
-                            <option>Select Country</option>
-                            <option>America</option>
-                            <option>Uganda</option>
-                            <option>Kenya</option>
-                            <option>China</option>
-                            <option>Sudan</option>
-                            <option>Denmark</option>
-                            <option>German</option>
-                        </select>
-                        <div>
-                            <input type="text" placeholder="Parcel name">
-                            <select>
-                                    <option>Select Category</option>
-                                    <option>Perishable</option>
-                                    <option>Fragile</option>
-                                    <option>Hazardrous</option>
-                                    <option>Weapons</option>
-                                    <option>Solvets</option>
-                                </select>
-                        </div>
-                        <input type="text" placeholder="Address">
-                        <input type="text" placeholder="suite, Building">
-                        <div>
-                                <input type="text" placeholder="city">
-                                <input type="tel" placeholder="Postal code">
-                            </div>
-                            
-                            <div>
-                                    <input type="email" placeholder="Email">
-                                    <input type="tel" placeholder="Contact">
-                                </div>
-                                
-                                <input type="submit" value="Continue">
-                                <input type="submit" value="Cancel Shipment">
-                    </form>
-                </div>
-
-
+    <div class="topbar">
+        <div>
+            <a href="home.html"><img src="/UI/img/icons8-in-transit-80.png" /></a>
         </div>
-    
+        <ul>
+            <li><a href="#">Tracking</a></li>
+            <li class="dropdown dropbtn" onclick="myFunction()">
+                <a href="#" >New Shipping</a>
+                <div class="dropdown-content" id="myDropdown">
+                    <ul>
+                        <li><a href="send_a_parcel.html">Create a Shipment</a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <!-- <h2>Create a Parcel Delivery Order</h2> -->
+        <div class="ship">
+            <form>
+                <h3>Sender *</h3>
+                <hr>
+                <select>
+                    <option>Select Country</option>
+                    <option>America</option>
+                    <option>Uganda</option>
+                    <option>Kenya</option>
+                    <option>China</option>
+                    <option>Sudan</option>
+                    <option>Denmark</option>
+                    <option>German</option>
+                </select>
+                <div>
+                    <input type="text" placeholder="Parcel name">
+                    <select>
+                        <option>Select Category</option>
+                        <option>Perishable</option>
+                        <option>Fragile</option>
+                        <option>Hazardrous</option>
+                        <option>Weapons</option>
+                        <option>Solvets</option>
+                    </select>
+                </div>
+                <input type="text" placeholder="Full names">
+                <input type="text" placeholder="Address">
+                <input type="text" placeholder="suite, Building">
+                <div>
+                    <input type="text" placeholder="city">
+                    <input type="tel" placeholder="Postal code">
+                </div>
+
+                <div>
+                    <input type="email" placeholder="Email">
+                    <input type="tel" placeholder="Contact">
+                </div>
+
+            </form>
+        </div>
+
+        <div class="shipto">
+
+            <form>
+                <h3>Receiver *</h3>
+                <hr>
+                <select>
+                    <option>Select Country</option>
+                    <option>America</option>
+                    <option>Uganda</option>
+                    <option>Kenya</option>
+                    <option>China</option>
+                    <option>Sudan</option>
+                    <option>Denmark</option>
+                    <option>German</option>
+                </select>
+                <div>
+                    <input type="text" placeholder="Parcel name">
+                    <select>
+                        <option>Select Category</option>
+                        <option>Perishable</option>
+                        <option>Fragile</option>
+                        <option>Hazardrous</option>
+                        <option>Weapons</option>
+                        <option>Solvets</option>
+                    </select>
+                </div>
+                <input type="text" placeholder="Address">
+                <input type="text" placeholder="suite, Building">
+                <div>
+                    <input type="text" placeholder="city">
+                    <input type="tel" placeholder="Postal code">
+                </div>
+
+                <div>
+                    <input type="email" placeholder="Email">
+                    <input type="tel" placeholder="Contact">
+                </div>
+
+                <input type="submit" value="Continue">
+                <input type="submit" value="Cancel Shipment">
+            </form>
+        </div>
+
+
+    </div>
+
 </body>
 
 </html>

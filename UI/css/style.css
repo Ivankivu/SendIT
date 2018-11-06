@@ -19,6 +19,7 @@ body{
 }
 .topbar > ul{
     width: 100%;
+    font-size: 130%;
 }
 
 .topbar > ul > li{
@@ -27,14 +28,12 @@ body{
     width:10%;
     height: 40%;
     padding: 1%;
-    justify-content: center;
     text-align: center;
 }
 
 .topbar > ul > li > a{
     color:white;
     text-decoration: none;
-    font-size: 130%;
 }
 
 .topbar > ul >li:hover{
@@ -42,10 +41,9 @@ body{
 }
 
 
-.dropdown {
+.topbar > ul >.dropdown {
     float: left;
     overflow: hidden;
-    
 }
 
 .dropdown > .dropbtn {
