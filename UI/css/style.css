@@ -12,11 +12,15 @@ body{
 .container2{
     display: flex;
     flex-direction:column;
+    overflow: hidden;
     width:100%;
     height: 100%;
+
 }
 
 .topbar{
+
+    position: static;
     display: flex;
     flex-direction: row;
     width:100%;
@@ -95,8 +99,9 @@ body{
     list-style-type: none;
 }
 
-.dropdown-content a{
+.dropdown-content ul li a{
     color:white;
+    text-decoration: none;
 }
 .dropdown-content a:hover {
     color: #ddd;
