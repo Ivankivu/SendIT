@@ -10,3 +10,17 @@ window.onclick = function(e) {
       }
   }
 }
+
+// google map
+
+function initMap() { 
+  var test= {lat: 0.3476, lng: 32.5825}; 
+  var map = new google.maps.Map(document.getElementById('map'), { 
+    zoom: 10, 
+    center: test 
+  }); 
+  var marker = new google.maps.Marker({ 
+    position: test, 
+    map: map 
+  }); 
+} 
