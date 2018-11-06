@@ -10,6 +10,90 @@ body{
     height: 100%;
 }
 
+.topbar{
+    display: flex;
+    flex-direction: row;
+    width:100%;
+    height: 15%;
+    background-color: blue;
+}
+.topbar > ul{
+    width: 100%;
+}
+
+.topbar > ul > li{
+    display: inline-block;
+    margin-left:2%;
+    width:10%;
+    height: 40%;
+    padding: 1%;
+    justify-content: center;
+    text-align: center;
+}
+
+.topbar > ul > li > a{
+    color:white;
+    text-decoration: none;
+    font-size: 130%;
+}
+
+.topbar > ul >li:hover{
+    background-color: rgb(77, 75, 75,0.5) 
+}
+
+
+.dropdown {
+    float: left;
+    overflow: hidden;
+    
+}
+
+.dropdown > .dropbtn {
+    cursor: pointer;
+    font-size: 16px;    
+    border: none;
+    /* outline: none; */
+    color: white;
+    /* padding: 14px 16px; */
+    background-color: inherit;
+    font-family: inherit;
+    /* margin: 0; */
+    /* margin-left:-20px; */
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    /* cursor: pointer; */
+    margin: 3.2% 0% 0% 0%;
+    background-color: blue;
+    box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content ul {
+    float: none;
+    display: block;
+}
+
+.dropdown-content ul li{
+    display: block;
+    color:white;
+    padding: 12px 16px;
+    text-decoration: none;
+    list-style-type: none;
+}
+
+.dropdown-content a{
+    color:white;
+}
+.dropdown-content a:hover {
+    color: #ddd;
+}
+
+.show {
+    display: block;
+}
 
 .container > #left{
     background-color:blue;
@@ -80,5 +164,115 @@ body{
 .signin{
     margin:0 auto;
 }
+/*left*/
+.content{
+    display: flex;
+    flex-direction: row;
+    width:100%;
+}
+.content > .ship{
+    float: left;
+    width: 100%;
+    margin-left: 2%;
+}
 
+.content > .ship > form{
+    display: flex;
+    flex-direction: column;
+    width:80%;
+    height: 100%;
+    padding:2%;
+}
 
+.content > .ship > form > select{
+    margin: 0% 0% 2% 0%;
+    width:100%;
+    height: 8%;
+    padding: 1% 0% 1% 1%;
+}
+
+/* .content > .ship > form > select > option{
+    margin: 1% 0% 1% 0%;
+    height: 20%;
+    padding: 1% 1% 1% 1%;
+} */
+
+.content > .ship > form > input{
+    margin: 2% 0% 2% 0%;
+    padding: 2%;
+}
+
+.content > .ship > form > div > select{
+    margin: 0% 0% 1% 0%;
+    width:50%;
+    height: 8%;
+    /* padding: 1% 0% 1% 1%; */
+}
+
+.content > .ship > form > div{
+    display: flex;
+    flex-direction: row;
+    /* margin: 10% 0% 10% 10%; */
+    width:100%;
+}
+
+.content >.ship > form > div > input{
+    float: left;
+    padding: 3%;
+    margin: 2% 2% 2% 0%;
+    width:50%;
+}
+/*right*/
+.content > .shipto{
+    float: right;
+    width: 100%;
+    margin-left: 2%;
+}
+
+.content > .shipto > form{
+    display: flex;
+    flex-direction: column;
+    width:80%;
+    height: 100%;
+    margin-left: 5%;
+    padding:2%;
+}
+
+.content > .shipto > form > select{
+    margin: 0% 0% 5% 0%;
+    width:100%;
+    height: 8%;
+    padding: 1% 0% 1% 1%;
+}
+
+.content > .shipto > form > div > select{
+    margin: 0% 0% 1% 0%;
+    width:50%;
+    height: 8%;
+    padding: 1% 0% 1% 1%;
+}
+
+/* .content > .ship > form > select > option{
+    margin: 1% 0% 1% 0%;
+    height: 20%;
+    padding: 1% 1% 1% 1%;
+} */
+
+.content > .shipto > form > input{
+    margin: 2% 0% 2% 0%;
+    padding: 2%;
+}
+
+.content > .shipto > form > div{
+    display: flex;
+    flex-direction: row;
+    /* margin: 10% 0% 10% 10%; */
+    width:100%;
+}
+
+.content >.shipto > form > div > input{
+    float: left;
+    padding: 3%;
+    margin: 2% 2% 2% 0%;
+    width:50%;
+}
