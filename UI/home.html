@@ -1,0 +1,59 @@
+<!doctype <!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>SendIT | Home</title>
+    <link rel="shortcut icon" type="image/png" href="img/icons8-in-transit-40.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/map.css" />
+
+    <script src="js/script.js"></script>
+</head>
+
+<body>
+    <div class="topbar">
+        <div>
+            <a href="home.html"><img src="img/icons8-in-transit-80.png" /></a>
+        </div>
+        <ul>
+            <li><a href="home.html">Tracking</a></li>
+            <li class="dropdown dropbtn" onclick="myFunction()">
+                <a href="#">Shipping</a>
+                <div class="dropdown-content" id="myDropdown">
+                    <ul>
+                        <li><a href="send_a_parcel.html">New Shipment</a></li>
+                        <li><a href="shippinghistory.html">Shipping History</a></li>
+                        <li><a href="orderdetails.html">Order Details</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li class="dropdown dropbtn" onclick="upFunction()">
+                <a href="#">My Account</a>
+                <div class="dropdown-content" id="myDropup">
+                    <ul>
+                        <li><a href="#">Profile</a></li>
+                        <li><a href="index.html">Logout</a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="container2">
+
+
+        <div id="map"></div>
+        <div id="track">
+            <h3>Tracking Number</h3>
+            <input type="text" placeholder="e.g SIT13256758">
+        </div>
+    </div>
+
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDy5ccVAXNyGvz9h_q1UeU_iMm6b-JJb_Y&callback=initMap">
+
+    </script>
+</body>
+
+</html>
