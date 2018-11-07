@@ -26,16 +26,16 @@ window.onclick = function (e) {
 // google map
 
 function initMap() {
-  var test = {
+  var kampala = {
     lat: 0.3476,
     lng: 32.5825
   };
   var map = new google.maps.Map(document.getElementById('map'), {
     zoom: 10,
-    center: test
+    center: kampala
   });
   var marker = new google.maps.Marker({
-    position: test,
+    position: kampala,
     map: map
   });
 }
