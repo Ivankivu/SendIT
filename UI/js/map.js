@@ -1,3 +1,22 @@
+// google map
+
+function initMap() {
+  var kampala = {
+    lat: 0.3476,
+    lng: 32.5825
+  };
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 10,
+    center: kampala
+  });
+  var marker = new google.maps.Marker({
+    position: kampala,
+    map: map
+  });
+}
+
+
+//dropdown
 function myFunction() {
   document.getElementById("myDropdown").classList.toggle("show");
 }
@@ -21,23 +40,4 @@ window.onclick = function (e) {
       myDropup.classList.remove('show');
     }
   }
-}
-
-
-
-//accordion
-
-var acc = document.getElementsByClassName("accordion");
-var i;
-
-for (i = 0; i < acc.length; i++) {
-  acc[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    var panel = this.nextElementSibling;
-    if (panel.style.maxHeight){
-      panel.style.maxHeight = null;
-    } else {
-      panel.style.maxHeight = panel.scrollHeight + "px";
-    } 
-  });
 }
