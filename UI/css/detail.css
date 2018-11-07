@@ -1,7 +1,7 @@
 #map { 
     display: flex;
     flex-direction: column;
-    width: 100%; 
+    width: 50%; 
     height: 100%; 
     background-color: grey; 
   } 
@@ -19,7 +19,8 @@
     background-color: #eee;
     color: #444;
     cursor: pointer;
-    padding: 18px;
+    margin:0% 0% 0% 0%;
+    padding: 14px;
     width: 100%;
     border: none;
     text-align: left;
@@ -48,8 +49,34 @@
     padding: 0 18px;
     background-color: white;
     max-height: 0;
-    overflow: hidden;
+    overflow: scroll;
     transition: max-height 0.2s ease-out;
+
+}
+.panel > div{
+    border-style: double;
+    padding: 0.1%;
+    width: 100%;
+}
+
+.panel > div > h4{
+    font-weight: 100;
+}
+
+.panel > div > h4 > span{
+    font-weight: bold;
+    margin: 0% 10% 0% 3%;
+}
+
+.panel > div > h3{
+    font-weight: bold;
+    margin: 0% 10% 0% 3%;
+}
+
+.panel > div > input{
+    float: right;
+    margin: -17% 5% 0% 0%;
+    padding: 4%;
 }
 
 #top{
@@ -67,3 +94,4 @@
     height:8%;
     margin-top:1.5%;
 }
+
