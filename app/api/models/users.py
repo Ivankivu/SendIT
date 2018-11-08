@@ -68,3 +68,6 @@ class User:
             orders.append(new_order)
             message = {"msg": "Delivery order was created successfully!"}
         return message
+
+    def get_orders():
+        return orders
