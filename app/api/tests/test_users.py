@@ -1,5 +1,5 @@
 import unittest
-from api import app
+from app import app
 from api.models.users import User
 
 
