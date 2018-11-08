@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/Ivankivu/SendIT.svg?branch=161794702-user-can-get-all-parcel-delivery)](https://travis-ci.com/Ivankivu/SendIT) | [![Maintainability](https://api.codeclimate.com/v1/badges/e98ad700ef47397de5a0/maintainability)](https://codeclimate.com/github/Ivankivu/SendIT/maintainability)
+[![Build Status](https://travis-ci.com/Ivankivu/SendIT.svg?branch=161794702-user-can-get-all-parcel-delivery)](https://travis-ci.com/Ivankivu/SendIT) | [![Maintainability](https://api.codeclimate.com/v1/badges/e98ad700ef47397de5a0/maintainability)](https://codeclimate.com/github/Ivankivu/SendIT/maintainability) | [![Coverage Status](https://coveralls.io/repos/github/Ivankivu/SendIT/badge.svg?branch=161794702-user-can-get-all-parcel-delivery)](https://coveralls.io/github/Ivankivu/SendIT?branch=161794702-user-can-get-all-parcel-delivery)
 
 # SendIT
 
