@@ -11,7 +11,12 @@ class ViewOrders():
     def Home():
         return jsonify({"msg": "Welcome to SendIT"})
 
-    @app.route("/parcels", methods=["POST"])
+    @app.route("/api/v1/parcels", methods=["get"])
+    def get_all_orders():
+        response = User.get_orders()
+        return jsonify(response)
+
+    @app.route("/api/v1/parcels", methods=["POST"])
     def add_order():
         if not request.get_json():
             return make_response(
