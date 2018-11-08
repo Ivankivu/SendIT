@@ -69,5 +69,3 @@ class User:
             message = {"msg": "Delivery order was created successfully!"}
         return message
 
-    def get_orders():
-        return orders
