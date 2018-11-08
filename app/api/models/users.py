@@ -1,5 +1,5 @@
 import string
-from flask import Flask, request, Response
+from flask import Flask, request, Response, jsonify
 from app.utils import auto_id, is_empty
 from app.api.models.delivery_orders import Order, orders
 
@@ -66,8 +66,13 @@ class User:
             return message
         else:
             orders.append(new_order)
-            message = {"msg": "Delivery order was created successfully!"}
-        return message
+
+            message = {
+                    "message": "Delivery order was created successfully!",
+                    "parcel delivery order": new_order
+                    }, 201
+
+            return message
 
     def get_orders():
         return orders
