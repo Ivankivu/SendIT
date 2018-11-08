@@ -1,4 +1,5 @@
-[![Build Status](https://travis-ci.com/Ivankivu/SendIT.svg?branch=161794702-user-can-get-all-parcel-delivery)]|[![Maintainability](https://travis-ci.com/Ivankivu/SendIT)(https://api.codeclimate.com/v1/badges/e98ad700ef47397de5a0/maintainability)]
+[![Build Status](https://travis-ci.com/Ivankivu/SendIT.svg?branch=161794702-user-can-get-all-parcel-delivery)]
+[![Maintainability](https://travis-ci.com/Ivankivu/SendIT)]
 
 # SendIT
 
