@@ -1,0 +1,148 @@
+<!doctype <!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>SendIT | Home</title>
+    <link rel="shortcut icon" type="image/png" href="img/icons8-in-transit-40.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/detail.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/table.css" />
+</head>
+
+<body>
+    <div class="topbar">
+        <div>
+            <a href="home.html"><img src="img/icons8-in-transit-80.png" /></a>
+        </div>
+        <ul>
+            <li><a href="home.html">Tracking</a></li>
+            <li class="dropdown dropbtn" onclick="myFunction()">
+                <a href="#">Shipping</a>
+                <div class="dropdown-content" id="myDropdown">
+                    <ul>
+                        <li><a href="send_a_parcel.html">New Shipment</a></li>
+                        <li><a href="shippinghistory.html">Shipping History</a></li>
+                        <li><a href="orderdetails.html">Order Details</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li class="dropdown dropbtn" onclick="upFunction()">
+                <a href="#">My Account</a>
+                <div class="dropdown-content" id="myDropup">
+                    <ul>
+                        <li><a href="#">Profile</a></li>
+                        <li><a href="index.html">Logout</a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="container3">
+        <div id="map"></div>
+        <div id="table">
+            <div id="top">
+                <h2>Active Orders</h2><input type="button" value="New Order" onclick="window.location.replace('send_a_parcel.html')">
+            </div>
+            <button class="accordion">Dell computer,Desktop PD505 i7 8th generation |
+                ****************************************************</button>
+            <div class="panel">
+                <h3>Order Details</h3><input type="button" value="Cancel Order">
+                <div>
+                    <h4><span>Order date</span>May 7, 2018</h4>
+                    <h4><span>Order # &nbsp;&nbsp;&nbsp;&nbsp;</span>SIT17265758</h4>
+                    <h4><span>Order total</span>Ushs30,000 (1 item)</h4>
+                    
+                    <input type="button" value="Check Status">
+                </div>
+                <h3>Shipment Details</h3>
+                <div>
+                    <h4>Two-Day Shipping</h4>
+                    <hr>
+                    <h3>Delivered</h3>
+                    <h4><span>Delivery Estimate</span></h4>
+                    <h4><span>Thursday, may 12, 2018 by 8:00pm</span></h4>
+                </div>
+
+            </div>
+
+            <button class="accordion">Section 2</button>
+            <div class="panel">
+                <h3>Order Details</h3>
+                <div>
+                    <h4><span>Order date</span>May 7, 2018</h4>
+                    <h4><span>Order #</span>SIT17265758</h4>
+                    <h4><span>Order total</span>Ushs30,000 (1 item)</h4>
+                </div>
+                <h3>Shipment Details</h3>
+                <div>
+                    <h4>Two-Day Shipping</h4>
+                    <hr>
+                    <h3>Delivered</h3>
+                    <h4><span>Delivery Estimate</span></h4>
+                    <h4><span>Thursday, may 12, 2018 by 8:00pm</span></h4>
+                </div>
+
+            </div>
+
+            <button class="accordion">Section 3</button>
+            <div class="panel">
+                <h3>Order Details</h3>
+                <div>
+                    <h4><span>Order date</span>May 7, 2018</h4>
+                    <h4><span>Order #</span>SIT17265758</h4>
+                    <h4><span>Order total</span>Ushs30,000 (1 item)</h4>
+                </div>
+                <h3>Shipment Details</h3>
+                <div>
+                    <h4>Two-Day Shipping</h4>
+                    <hr>
+                    <h3>Delivered</h3>
+                    <h4><span>Delivery Estimate</span></h4>
+                    <h4><span>Thursday, may 12, 2018 by 8:00pm</span></h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function initMap() {
+          var locations = [
+            ['Kampala', 0.3476, 32.5825, 4],
+            ['Seeta', 0.3669, 32.7125]
+          ];
+    
+          var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 10,
+            center: new google.maps.LatLng(0.3669, 32.7125),
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+          });
+      
+          var infowindow = new google.maps.InfoWindow();
+      
+          var marker, i;
+      
+          for (i = 0; i < locations.length; i++) {  
+            marker = new google.maps.Marker({
+              position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+              map: map
+            });
+      
+            google.maps.event.addListener(marker, 'click', (function(marker, i) {
+              return function() {
+                infowindow.setContent(locations[i][0]);
+                infowindow.open(map, marker);
+              }
+            })(marker, i));
+          }
+      }
+        </script>
+
+<script src="js/script.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDy5ccVAXNyGvz9h_q1UeU_iMm6b-JJb_Y&callback=initMap">
+
+    </script>
+</body>
+
+</html>
