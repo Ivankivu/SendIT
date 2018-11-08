@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/Ivankivu/SendIT.svg?branch=161794702-user-can-get-all-parcel-delivery)](https://travis-ci.com/Ivankivu/SendIT)
+
 # SendIT
 
 SendIT is a courier service that helps users deliver parcels to different destinations. SendIT provides courier quotes based on weight categories.
