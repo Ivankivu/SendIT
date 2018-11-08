@@ -20,7 +20,6 @@ class User:
         self.password = password
 
     def signup_user(self):
-
         data = request.get_json()
         uname = data.get("username")
         pwd = data.get("password")
@@ -62,15 +61,10 @@ class User:
         existing_order = [order for order in orders
                           if order["parcel_name"] == self.parcel_name]
 
-        # orders.append(new_order)
-        # return new_order
         if not is_empty(existing_order):
-            message = {"message": "Order already exists"}
+            message = {"message": "Delivery order already exists"}
             return message
         else:
             orders.append(new_order)
-            message = {"msg": "Product was created successfully!"}
+            message = {"msg": "Delivery order was created successfully!"}
         return message
-
-    def get_orders():
-        pass
