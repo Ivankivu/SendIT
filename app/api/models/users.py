@@ -9,10 +9,8 @@ userid = auto_id(users)
 
 class User:
 
-    def __init__(self, **user_data):
-        super(User, self).__init__(userid, orderid, 'parcel_name',
-                                   'category', 'parcel_weight', 'source',
-                                   'destination', 'distance', 'cost')
+    def __init__(self, **kwargs):
+        super(User, self).__init__()
         self.userid = kwargs.get("userid")
         self.username = kwargs.get("username")
         self.email = kwargs.get("email")

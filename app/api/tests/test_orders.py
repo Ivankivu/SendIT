@@ -12,7 +12,6 @@ class TestOrders(unittest.TestCase):
     def setUp(self):
 
         self.client = app.test_client(self)
-        # self.order = Order(**kwargs)
         self.Orders = orders
         self.route_url = 'api/v1/parcels'
         self.parcel_order = dict(
@@ -41,3 +40,4 @@ class TestOrders(unittest.TestCase):
         result = self.client.get('api/v1/parcels',
                                  content_type='application/json')
         self.assertEqual(200, result.status_code, msg="found orders")
+
