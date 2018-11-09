@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/Ivankivu/SendIT.svg?branch=161794702-user-can-get-all-parcel-delivery)](https://travis-ci.com/Ivankivu/SendIT) | [![Maintainability](https://api.codeclimate.com/v1/badges/e98ad700ef47397de5a0/maintainability)](https://codeclimate.com/github/Ivankivu/SendIT/maintainability) | [![Coverage Status](https://coveralls.io/repos/github/Ivankivu/SendIT/badge.svg?branch=161794702-user-can-get-all-parcel-delivery)](https://coveralls.io/github/Ivankivu/SendIT?branch=161794702-user-can-get-all-parcel-delivery)
+[![Build Status](https://travis-ci.com/Ivankivu/SendIT.svg?branch=161794702-e4129693-sendit-api)](https://travis-ci.com/Ivankivu/SendIT) | [![Maintainability](https://api.codeclimate.com/v1/badges/e98ad700ef47397de5a0/maintainability)](https://codeclimate.com/github/Ivankivu/SendIT/maintainability) | [![Test Coverage](https://api.codeclimate.com/v1/badges/e98ad700ef47397de5a0/test_coverage)](https://codeclimate.com/github/Ivankivu/SendIT/test_coverage) | [![Coverage Status](https://coveralls.io/repos/github/Ivankivu/SendIT/badge.svg?branch=161794702-e4129693-sendit-api)](https://coveralls.io/github/Ivankivu/SendIT?branch=161794702-e4129693-sendit-api)
 
 # SendIT
 
@@ -46,7 +46,7 @@ SendIT is a courier service that helps users deliver parcels to different destin
 What things you need to install the software
 
 ```python
-* Python 3.6 and later- Programming language that lets you work more dynamically
+* Python [3.6](https://www.python.org/downloads/release/python-367/) and later- Programming language that lets you work more dynamically
 * Flask - Python based web framework thats rich with dependecy support
 * Virtualenv - A virtual environment for Running the tests
 ```
