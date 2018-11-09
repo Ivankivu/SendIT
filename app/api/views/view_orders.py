@@ -5,7 +5,7 @@ from app.api.models.users import User
 from app.utils import auto_id
 
 
-class ViewOrders():
+class ViewOrders:
 
     @app.route("/", methods=["GET"])
     def Home():
@@ -19,8 +19,7 @@ class ViewOrders():
     @app.route("/api/v1/parcels", methods=["POST"])
     def add_order():
         if not request.get_json():
-            return make_response(
-                jsonify({"message": "Request should be json"}), 400)
+            return jsonify({"message": "Request should be json"}), 400
         orders = request.get_json()
         orderid = auto_id(orders)
         parcel_name = orders.get("parcel_name")
