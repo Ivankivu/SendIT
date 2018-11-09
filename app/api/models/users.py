@@ -1,7 +1,7 @@
 import string
 from flask import Flask, request, Response, jsonify
 from app.utils import auto_id, is_empty
-from app.api.models.delivery_orders import Order, orders
+from app.api.models.delivery_orders import Order, orders, orderid
 
 users = []
 userid = auto_id(users)
@@ -9,15 +9,15 @@ userid = auto_id(users)
 
 class User:
 
-    def __init__(self, userid, username, email, admin, password):
-        super(User, self).__init__(userid, 'orderid', 'parcel_name',
+    def __init__(self, **user_data):
+        super(User, self).__init__(userid, orderid, 'parcel_name',
                                    'category', 'parcel_weight', 'source',
                                    'destination', 'distance', 'cost')
-        self.userid = auto_id(users)
-        self.username = username
-        self.email = email
-        self.admin = False
-        self.password = password
+        self.userid = kwargs.get("userid")
+        self.username = kwargs.get("username")
+        self.email = kwargs.get("email")
+        self.admin = kwargs.get(False)
+        self.password = kwargs.get("password")
 
     def signup_user(self):
         data = request.get_json()
@@ -47,7 +47,7 @@ class User:
         return self.admin
 
     ''' create new delivery order '''
-    def create_order(self):
+    def create_order(self, **data):
         new_order = {
             "parcel_name": self.parcel_name,
             "category": self.category,
@@ -76,3 +76,6 @@ class User:
 
     def get_orders():
         return orders
+
+    def get_specific_order(orderid):
+        pass

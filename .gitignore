@@ -4,6 +4,12 @@ venv/
 .pytest_cache/
 .vscode
 .vscode/
+__pycache__
+__pycache__/
+/__pycache__
+/__pycache__/
+app/__pycache__
+app/__pycache__/
 app/api/models/__pycache__
 app/api/models/__pycache__/
 app/api/tests/__pycache__/
