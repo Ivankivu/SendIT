@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/Ivankivu/SendIT.svg?branch=161794702-user-can-get-all-parcel-delivery)]|[![Maintainability](https://travis-ci.com/Ivankivu/SendIT)(https://api.codeclimate.com/v1/badges/e98ad700ef47397de5a0/maintainability)](https://codeclimate.com/github/Ivankivu/SendIT/maintainability)
+[![Build Status](https://travis-ci.com/Ivankivu/SendIT.svg?branch=161794702-user-can-get-all-parcel-delivery)](https://travis-ci.com/Ivankivu/SendIT) | [![Maintainability](https://api.codeclimate.com/v1/badges/e98ad700ef47397de5a0/maintainability)](https://codeclimate.com/github/Ivankivu/SendIT/maintainability) | [![Coverage Status](https://coveralls.io/repos/github/Ivankivu/SendIT/badge.svg?branch=161794702-user-can-get-all-parcel-delivery)](https://coveralls.io/github/Ivankivu/SendIT?branch=161794702-user-can-get-all-parcel-delivery)
 
 # SendIT
 
@@ -24,15 +24,32 @@ SendIT is a courier service that helps users deliver parcels to different destin
 
 ## User Interface [Demo here](https://ivankivu.github.io/SendIT/UI/)
 
-## Built-with
+## Heroku [Demo](https://sendit-api-v1.herokuapp.com/)
 
-* Python3.6 - Programming language that lets you work more dynamically
+* copy the above url to any tool of your choice for like [Postman](https://www.getpostman.com/)
+* use the sample json data to get started
+
+```python
+{
+        "category": "pen",
+        "cost": 360,
+        "destination": "Seeta",
+        "distance": 23,
+        "parcel_name": "nice clear",
+        "parcel_weight": "23mg",
+        "source": "kampala"
+    }
+```
+
+### Prerequisites
+
+What things you need to install the software
+
+```python
+* Python 3.6 and later- Programming language that lets you work more dynamically
 * Flask - Python based web framework thats rich with dependecy support
 * Virtualenv - A virtual environment for Running the tests
-
-To get started in order to run tests, use this command below in your terminal
-
-pytest -v --with-coverage
+```
 
 ### Installation
 
@@ -57,3 +74,33 @@ $ pip install -r requirements.txt
 Run the server At the terminal or console type
 
 $ Python app.py
+
+## Running the tests
+
+This project is composed with continuous intergration thus on every repository activity like Push, pull requests testing is done
+with Travis CI, coveralls for test coverage and codeclimate for maintainability.
+
+Tests can be run locally with the following commands:
+
+* pytest -m unittest
+* pytest -v --cov app --cov-report term-missing
+* pytest -v --with-coverage
+
+### A example of tests
+
+```python
+def test_order_exists(self):
+        order = Order(1, "pen", 360, "Seeta", 23,
+                      "nice clear", "23mg", "kampala")
+        self.assertTrue(order)
+
+This test block above tests to check if this particular Order does exist in the list
+```
+
+## Authors
+
+* **Ivan Kivumbi** - *Initial work* - [FastFoodFast](https://github.com/Fast-Food-Fast)
+
+## Acknowledgments
+
+* We warmly welcome comments and reviews
