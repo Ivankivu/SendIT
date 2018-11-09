@@ -17,9 +17,9 @@ SendIT is a courier service that helps users deliver parcels to different destin
 
 * As an Admin:
     1. Admin can login
-    2. Admin view orders page
+    2. Admin view parcels page
     3. Admin can change status and location of the parcel delivery
-    4. Admin can mark delivered orders
+    4. Admin can mark delivered parcels
     5. Admin can logout
 
 ## User Interface [Demo here](https://ivankivu.github.io/SendIT/UI/)
@@ -89,12 +89,12 @@ Tests can be run locally with the following commands:
 ### A example of tests
 
 ```python
-def test_order_exists(self):
-        order = Order(1, "pen", 360, "Seeta", 23,
+def test_parcel_exists(self):
+        parcel = parcel(1, "pen", 360, "Seeta", 23,
                       "nice clear", "23mg", "kampala")
-        self.assertTrue(order)
+        self.assertTrue(parcel)
 
-This test block above tests to check if this particular Order does exist in the list
+This test block above tests to check if this particular parcel does exist in the list
 ```
 
 ## Authors

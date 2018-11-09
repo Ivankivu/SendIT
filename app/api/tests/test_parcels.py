@@ -1,21 +1,21 @@
 import unittest
 from flask import Response, json
 from app import app
-from app.api.models.delivery_orders import Order, orderid, orders
-from app.api.views.view_orders import ViewOrders
+from app.api.models.parcels import Parcel, parcelid, parcels
+from app.api.views.view_parcels import Viewparcels
 from app.api.models.users import User
 from app.utils import auto_id
 
 
-class TestOrders(unittest.TestCase):
+class Testparcels(unittest.TestCase):
 
     def setUp(self):
 
         self.client = app.test_client(self)
-        self.Orders = orders
+        self.parcels = parcels
         self.route_url = 'api/v1/parcels'
-        self.parcel_order = dict(
-            orderid=auto_id(self.Orders),
+        self.parcel_parcel = dict(
+            parcelid=auto_id(self.parcels),
             category="pen",
             cost=360,
             destination="Seeta",
@@ -25,19 +25,19 @@ class TestOrders(unittest.TestCase):
             source="kampala"
         )
 
-    def test_order_exists(self):
-        order = Order(orderid=1, category="pen", cost=360, destination="Seeta",
-                      distance=23, parcel_name="nice clear", parcel_weight=23,
-                      source="kampala")
-        self.assertTrue(order)
+    def test_parcel_exists(self):
+        parcel = Parcel(parcelid=1, category="pen", cost=360,
+                        destination="Seeta", distance=23,
+                        parcel_name="nice clear",
+                        parcel_weight=23, source="kampala")
+        self.assertTrue(parcel)
 
-    def test_order_added_successfully(self):
+    def test_parcel_added_successfully(self):
         result = self.client.post('api/v1/parcels',
                                   content_type='application/json')
         self.assertEqual(result.status_code, 400)
 
-    def test_getting_Parcel_orders(self):
+    def test_getting_Parcel_parcels(self):
         result = self.client.get('api/v1/parcels',
                                  content_type='application/json')
-        self.assertEqual(200, result.status_code, msg="found orders")
-
+        self.assertEqual(200, result.status_code, msg="found parcels")
