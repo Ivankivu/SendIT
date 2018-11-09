@@ -1,0 +1,11 @@
+venv
+venv/
+.pytest_cache
+.pytest_cache/
+.vscode
+.vscode/
+app/api/models/__pycache__
+app/api/models/__pycache__/
+app/api/tests/__pycache__/
+app/api/views/__pycache__/
+app/api/__pycache__
