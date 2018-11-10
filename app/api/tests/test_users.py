@@ -25,19 +25,12 @@ class TestUser(unittest.TestCase):
                     admin=True, password="andela14")
         self.assertTrue(user)
 
-    def test_parcel_exists(self):
-        parcel = Parcel(parcelid=1, category="pen", cost=360,
-                        destination="Seeta", distance=23,
-                        parcel_name="nice clear",
-                        parcel_weight=23, source="kampala")
-        self.assertTrue(parcel)
-
-    def test_parcel_added_successfully(self):
-        result = self.client.post('api/v1/parcels',
+    def test_user_added_successfully(self):
+        result = self.client.post('api/v1/users',
                                   content_type='application/json')
         self.assertEqual(result.status_code, 400)
 
-    def test_getting_Parcel_parcels(self):
-        result = self.client.get('api/v1/parcels',
+    def test_getting_user_users(self):
+        result = self.client.get('api/v1/users',
                                  content_type='application/json')
-        self.assertEqual(200, result.status_code, msg="found parcels")
+        self.assertEqual(200, result.status_code, msg="found users")
