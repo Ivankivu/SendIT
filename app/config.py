@@ -1,22 +1,24 @@
 import os
 
+basedir = os.path.abspath(os.path.dirname(__file__))
 
-class BaseConfig(object):
+
+class Config(object):
     """
     Common configurations
     """
     TESTING = False
     DEBUG = False
-    SECRET_KEY = os.urandom(24)
+    SECRET_KEY = os.getenv('SECRET_KEY', 'andela')
 
 
-class TestingConfig(BaseConfig):
+class TestingConfig(Config):
     """Configurations for Testing, with a separate test database."""
     TESTING = True
     DEBUG = True
 
 
-class DevelopmentConfig(BaseConfig):
+class DevelopmentConfig(Config):
     """
     Development configurations
     """
@@ -24,7 +26,7 @@ class DevelopmentConfig(BaseConfig):
     DEBUG = True
 
 
-class ProductionConfig(BaseConfig):
+class ProductionConfig(Config):
     """
     Production configurations
     """

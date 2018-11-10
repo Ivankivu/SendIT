@@ -1,13 +1,14 @@
-from app.utils import auto_id, is_empty
+from app.utils import Validator
 
-orders = []
-orderid = auto_id(orders)
+parcels = []
+parcelid = Validator.auto_id(parcels)
 
 
-class Order:
+class Parcel:
 
     def __init__(self, **kwargs):
-        self.orderid = kwargs.get("orderid")
+        self.parcelid = kwargs.get("parcelid")
+        self.tracking_number = kwargs.get("tracking_number")
         self.parcel_name = kwargs.get("parcel_name")
         self.category = kwargs.get("category")
         self.parcel_weight = kwargs.get("parcel_weight")
@@ -15,3 +16,5 @@ class Order:
         self.destination = kwargs.get("destination")
         self.distance = kwargs.get("distance")
         self.cost = kwargs.get("cost")
+        self.status = kwargs.get("status")
+        self.created_on = kwargs.get("craeted_on")
