@@ -4,7 +4,7 @@ from app import app
 from app.api.models.parcels import Parcel, parcelid, parcels
 from app.api.views.view_parcels import Viewparcels
 from app.api.models.users import User
-from app.utils import auto_id
+from app.utils import Validator
 
 
 class Testparcels(unittest.TestCase):
@@ -15,7 +15,7 @@ class Testparcels(unittest.TestCase):
         self.parcels = parcels
         self.route_url = 'api/v1/parcels'
         self.parcel_parcel = dict(
-            parcelid=auto_id(self.parcels),
+            parcelid=Validator.auto_id(self.parcels),
             category="pen",
             cost=360,
             destination="Seeta",

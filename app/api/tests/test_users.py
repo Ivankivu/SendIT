@@ -1,7 +1,7 @@
 import unittest
 from app import app
 from app.api.models.users import User, users
-from app.utils import auto_id
+from app.utils import Validator
 
 
 class TestUser(unittest.TestCase):
@@ -13,7 +13,7 @@ class TestUser(unittest.TestCase):
         self.route_url = 'api/v1/users'
         self.Users = users
         self.new_user = dict(
-            userid=auto_id(self.Users),
+            userid=Validator.auto_id(self.Users),
             username="ivan",
             email="ivan@example.com",
             admin=True,

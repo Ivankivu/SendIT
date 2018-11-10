@@ -1,20 +1,20 @@
 import string
+from datetime import datetime
 from flask import Flask, request, Response, jsonify
-from app.utils import auto_id, is_empty
+from app.utils import Validator
 from app.api.models.parcels import Parcel, parcels, parcelid
 
 users = []
-userid = auto_id(users)
+userid = Validator.auto_id(users)
 
 
 class User:
 
     def __init__(self, **kwargs):
-        super(User, self).__init__()
+        # super(User, self).__init__()
         self.userid = kwargs.get("userid")
         self.username = kwargs.get("username")
         self.email = kwargs.get("email")
-        self.admin = kwargs.get(False)
         self.password = kwargs.get("password")
 
     def signup_user(self):
@@ -22,21 +22,29 @@ class User:
         uname = data.get("username")
         pwd = data.get("password")
 
-        add_user = User(userid=auto_id(users), username=uname,
-                        email=self.email, admin=self.admin, password=pwd)
-        response = None
+        add_user = {
+            "userid": self.userid,
+            "username": self.username,
+            "email": self.email,
+            "password": self.password
+        }
 
         existing_user = [user for user in users if user['username'] == uname]
-        if existing_user:
-            response = {"erro": "username already exists!"}
+        if not Validator.is_empty(existing_user):
+            message = {"erro": "username already exists!"}
+            return message
         else:
-            users.append(dict(add_user.__dict__))
-            response = {"message": "User added Successfully!"}
-            print(users)
+            users.append(add_user)
 
-    def get_users(self):
+        message = {
+                    "message": "Account was created successfully!",
+                    "message": add_user
+                    }, 201
+        return message
+
+    def get_users():
         if users:
-            response = users
+            return users
         else:
             response = {"Message": "No users found!!"}
         return response
@@ -45,33 +53,37 @@ class User:
         return self.admin
 
     ''' create new delivery parcel '''
-    def create_parcel(self, **data):
+    def create_parcel(self):
         new_parcel = {
             "parcelid": parcelid,
+            "userid": userid,
+            "tracking_number": self.tracking_number,
             "parcel_name": self.parcel_name,
             "category": self.category,
             "parcel_weight": self.parcel_weight,
             "source": self.source,
+            "status": self.status,
             "destination": self.destination,
             "distance": self.distance,
-            "cost": self.cost
+            "cost": self.cost,
+            "Created_on": Validator.get_timestamp()
         }
 
         existing_parcel = [parcel for parcel in parcels
                            if parcel["parcel_name"] == self.parcel_name]
 
-        if not is_empty(existing_parcel):
+        if not Validator.is_empty(existing_parcel):
             message = {"message": "Delivery parcel already exists"}
             return message
         else:
             parcels.append(new_parcel)
 
-            message = {
+        message = {
                     "message": "Delivery parcel was created successfully!",
                     "parcel delivery parcel": new_parcel
                     }, 201
 
-            return message
+        return message
 
     def get_parcels():
         return parcels

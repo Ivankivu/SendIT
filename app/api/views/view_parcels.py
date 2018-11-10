@@ -1,8 +1,8 @@
 from flask import Flask, jsonify, request, Response
 from app import app
 from app.api.models.parcels import Parcel, parcels, parcelid
-from app.api.models.users import User
-from app.utils import auto_id, is_empty
+from app.api.models.users import User, users, userid
+from app.utils import Validator
 
 
 class Viewparcels:
@@ -22,24 +22,32 @@ class Viewparcels:
             return jsonify({"message": "Request should be json"}), 400
         info = request.get_json()
 
-        parcelid = auto_id(parcels)
+        parcelid = Validator.auto_id(parcels)
+        userid = Validator.auto_id(users)
+        tracking_number = info.get("tracking_number")
         parcel_name = info.get("parcel_name")
         category = info.get("category")
         parcel_weight = info.get("parcel_weight")
         source = info.get("source")
+        status = info.get("status")
         destination = info.get("destination")
         distance = info.get("distance")
         cost = info.get("cost")
+        created_on = info.get("created_on")
 
         parcel_instance = Parcel(
             parcelid=parcelid,
+            userid=userid,
+            tracking_number=tracking_number,
             parcel_name=parcel_name,
             category=category,
             parcel_weight=parcel_weight,
             source=source,
+            status=status,
             destination=destination,
             distance=distance,
-            cost=cost
+            cost=cost,
+            created_on=created_on
         )
 
         response = User.create_parcel(parcel_instance)
@@ -52,4 +60,8 @@ class Viewparcels:
             for parcel in parcels:
                 if parcelid == parcel['parcelid']:
                     return jsonify(parcel)
+                if parcelid != parcel['parcelid']:
+                    return jsonify({'error': 'Id doesnot exist'})
+                if is_not_:
+                    return jsonify({'msg': 'Parcel not found!'}), 400
             return jsonify({'msg': 'Parcel not found!'}), 400
