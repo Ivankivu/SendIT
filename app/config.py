@@ -9,7 +9,7 @@ class Config(object):
     """
     TESTING = False
     DEBUG = False
-    SECRET_KEY = os.getenv('SECRET_KEY', 'my_precious_secret_key')
+    SECRET_KEY = os.getenv('SECRET_KEY', 'andela')
 
 
 class TestingConfig(Config):
@@ -39,5 +39,3 @@ app_config = {
     'testing': TestingConfig,
     'production': ProductionConfig
 }
-
-key = Config.SECRET_KEY
