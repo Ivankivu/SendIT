@@ -1,4 +1,5 @@
-[![Build Status](https://travis-ci.org/Ivankivu/SendIT.svg?branch=e4129693-sendit-api)](https://travis-ci.org/Ivankivu/SendIT) [![Maintainability](https://api.codeclimate.com/v1/badges/e98ad700ef47397de5a0/maintainability)](https://codeclimate.com/github/Ivankivu/SendIT/maintainability) [![Coverage Status](https://coveralls.io/repos/github/Ivankivu/SendIT/badge.svg?branch=161794702-e4129693-sendit-api)](https://coveralls.io/github/Ivankivu/SendIT?branch=161794702-e4129693-sendit-api) [![codecov](https://codecov.io/gh/Ivankivu/SendIT/branch/e4129693-sendit-api/graph/badge.svg)](https://codecov.io/gh/Ivankivu/SendIT)
+[![Build Status](https://travis-ci.org/Ivankivu/SendIT.svg?branch=e4129693-sendit-api)](https://travis-ci.org/Ivankivu/SendIT) 
+[![Maintainability](https://api.codeclimate.com/v1/badges/e98ad700ef47397de5a0/maintainability)](https://codeclimate.com/github/Ivankivu/SendIT/maintainability) [![Coverage Status](https://coveralls.io/repos/github/Ivankivu/SendIT/badge.svg?branch=161794702-e4129693-sendit-api)](https://coveralls.io/github/Ivankivu/SendIT?branch=161794702-e4129693-sendit-api) [![codecov](https://codecov.io/gh/Ivankivu/SendIT/branch/e4129693-sendit-api/graph/badge.svg)](https://codecov.io/gh/Ivankivu/SendIT)
 
 # SendIT
 
