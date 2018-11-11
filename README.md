@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-[![Build Status](https://travis-ci.org/Ivankivu/SendIT.svg?branch=e4129693-sendit-api)](https://travis-ci.org/Ivankivu/SendIT) [![Maintainability](https://api.codeclimate.com/v1/badges/e98ad700ef47397de5a0/maintainability)](https://codeclimate.com/github/Ivankivu/SendIT/maintainability) [![Coverage Status](https://coveralls.io/repos/github/Ivankivu/SendIT/badge.svg?branch=161794702-e4129693-sendit-api)](https://coveralls.io/github/Ivankivu/SendIT?branch=161794702-e4129693-sendit-api) [![codecov](https://codecov.io/gh/Ivankivu/SendIT/branch/e4129693-sendit-api/graph/badge.svg)](https://codecov.io/gh/Ivankivu/SendIT)
-=======
 [![Build Status](https://travis-ci.org/Ivankivu/SendIT.svg?branch=e4129693-sendit-api)](https://travis-ci.org/Ivankivu/SendIT) 
 [![Maintainability](https://api.codeclimate.com/v1/badges/e98ad700ef47397de5a0/maintainability)](https://codeclimate.com/github/Ivankivu/SendIT/maintainability) [![Coverage Status](https://coveralls.io/repos/github/Ivankivu/SendIT/badge.svg?branch=e4129693-sendit-api)](https://coveralls.io/github/Ivankivu/SendIT?branch=e4129693-sendit-api) [![codecov](https://codecov.io/gh/Ivankivu/SendIT/branch/e4129693-sendit-api/graph/badge.svg)](https://codecov.io/gh/Ivankivu/SendIT)
->>>>>>> 4b216725ceda6b1cce56dbd81305559c63a6afa6
 
 # SendIT
 
@@ -107,8 +103,6 @@ This test block above tests to check if this particular parcel does exist in the
 | REQUEST | ROUTE | FUNCTIONALITY |
 | ------- | ----- | ------------- |
 | GET /parcels | [/api/v1/parcels](https://sendit-api-v1.herokuapp.com/api/v1/parcel) | Fetch all parcel delivery orders |
-| GET /parcels/<parcelId> | [/api/v1/parcels/<int:parcelid>](https://sendit-api-v1.herokuapp.com/api/v1/parcels/1) | Fetch a specific parcel delivery order |
-| GET /users/<userId>/parcels | [/api/v1/users<int:userid>/parcels](https://sendit-api-v1.herokuapp.com/api/v1/users/1/parcels) | Fetch all parcel delivery orders by a specific user|
 | PUT /parcels/<parcelId>/cancel| [/api/v2/users/orders](https://sendit-api-v1.herokuapp.com/api/v1/parcels/1/cancel) | Cancel the specific parcel delivery order|
 | POST /parcels| [/api/v2/users/orders](https://sendit-api-v1.herokuapp.com/api/v1/parcels) | Create a parcel delivery order |
 
