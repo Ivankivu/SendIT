@@ -41,8 +41,3 @@ class Testparcels(unittest.TestCase):
         result = self.client.get('api/v1/parcels',
                                  content_type='application/json')
         self.assertEqual(200, result.status_code, msg="found parcels")
-<<<<<<< HEAD
-
-    
-=======
->>>>>>> 4b216725ceda6b1cce56dbd81305559c63a6afa6
