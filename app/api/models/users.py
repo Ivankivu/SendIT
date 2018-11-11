@@ -100,9 +100,6 @@ class User:
             response = existing_parcel[0]
         return response
 
-    def get_parcel_by _specific_user():
-            pass
-
     def cancel_a_parcel(self, parcelid):
         data = request.get_json()
         parcel1 = {
