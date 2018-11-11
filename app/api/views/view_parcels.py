@@ -1,5 +1,5 @@
 import flask
-from flask import Flask, jsonify, request, Response
+from flask import Flask, jsonify, request, Response, Session
 from app import app
 from app.api.models.parcels import Parcel, parcels, parcelid
 from app.api.models.users import User, users, userid
@@ -12,10 +12,14 @@ class Viewparcels:
     def Home():
         return jsonify({"msg": "Welcome to SendIT"})
 
+    @app.route("/api/v1/parcels/", methods=["GET"])
     @app.route("/api/v1/parcels", methods=["GET"])
     def get_all_parcels():
         response = User.get_parcels()
-        return jsonify(response)
+        if response == []:
+            return jsonify({"Message": "No Parcels found!!"})
+        else:
+            return jsonify(response)
 
     @app.route("/api/v1/parcels", methods=["POST"])
     def add_parcel():
@@ -69,15 +73,8 @@ class Viewparcels:
 
     @app.route("/api/v1/parcels/<int:parcelid>/cancel",
                methods=["GET", "PUT"])
-    def cancel_a_specific_parcel(parcelid):
+    def cancel_a_specific_parcel(self, parcelid):
 
         if flask.request.method == 'GET':
-            for parcel1 in parcels:
-                if parcelid != parcel1['parcelid']:
-                    return jsonify({'error': 'parcelID match doesnot exist'})
-                if not parcel1:
-                    return jsonify({'msg': 'Parcel not found!'}), 400
-                if parcelid == parcel1['parcelid']:
-                    return jsonify(parcel1)
-
-        # elif flask.request.method == 'PUT':
+            response = User.cancel_a_parcel(parcelid)
+            return response

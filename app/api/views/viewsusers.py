@@ -2,6 +2,7 @@ from flask import Flask, jsonify, request, Response, json
 from app import app
 from app.api.models.parcels import Parcel, parcels, parcelid
 from app.api.models.users import User, userid, users
+from app.api.views.view_parcels import Viewparcels
 from app.utils import Validator
 
 
@@ -33,3 +34,12 @@ class ViewUser:
 
         response = User.signup_user(new_user)
         return jsonify(response), 201
+
+    # @app.route('/api/v1/users', methods=['POST'])
+    # def user_login():
+    #     if request.get['password'] == 'password'
+    #     and request.get['username'] == 'user':
+    #         session['logged_in'] = True
+    #     else:
+    #         flash('wrong password!')
+    #     return Viewparcels.Home()

