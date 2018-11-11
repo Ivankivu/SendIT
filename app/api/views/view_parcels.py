@@ -74,7 +74,7 @@ class Viewparcels:
         if flask.request.method == 'GET':
             for parcel1 in parcels:
                 if parcelid != parcel1['parcelid']:
-                    return jsonify({'error': 'parcelID doesnot exist'})
+                    return jsonify({'error': 'parcelID match doesnot exist'})
                 if not parcel1:
                     return jsonify({'msg': 'Parcel not found!'}), 400
                 if parcelid == parcel1['parcelid']:
