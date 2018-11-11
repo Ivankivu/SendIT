@@ -110,7 +110,7 @@ class User:
             "parcelid": ["parcelid"],
             "userid": ["userid"],
             "tracking_number": ["tracking_number"],
-            "parcel_name": ["parcel_name
+            "parcel_name": ["parcel_name"],
             "category": ["category"],
             "parcel_weight": ["parcel_weight"],
             "source": ["source"],
