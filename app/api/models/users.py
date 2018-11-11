@@ -1,4 +1,8 @@
 import string
+<<<<<<< HEAD
+=======
+import requests
+>>>>>>> 4b216725ceda6b1cce56dbd81305559c63a6afa6
 from datetime import datetime
 from flask import Flask, request, Response, jsonify
 from app.utils import Validator
@@ -19,8 +23,8 @@ class User:
 
     def signup_user(self):
         data = request.get_json()
-        uname = data.get("username")
-        pwd = data.get("password")
+        username = data.get("username")
+        password = data.get("password")
 
         add_user = {
             "userid": self.userid,
@@ -29,7 +33,12 @@ class User:
             "password": self.password
         }
 
+<<<<<<< HEAD
         existing_user = [user for user in users if user['username'] == uname]
+=======
+        existing_user = [user for user in users if
+                         user['username'] == username]
+>>>>>>> 4b216725ceda6b1cce56dbd81305559c63a6afa6
         if not Validator.is_empty(existing_user):
             message = {"erro": "username already exists!"}
             return message
@@ -97,3 +106,36 @@ class User:
         else:
             response = existing_parcel[0]
         return response
+<<<<<<< HEAD
+=======
+
+    # def get_parcel_by _specific_user():
+    #     existing_parcel = [parcel for parcel in parcels if
+    #                        parcel["parcelid"] == parcelid]
+
+    def cancel_a_parcel(self, parcelid):
+        data = request.get_json()
+        parcel1 = {
+            "parcelid": ["parcelid"],
+            "userid": ["userid"],
+            "tracking_number": ["tracking_number"],
+            "parcel_name": ["parcel_name"],
+            "category": ["category"],
+            "parcel_weight": ["parcel_weight"],
+            "source": ["source"],
+            "status": ["status"],
+            "destination": ["destination"],
+            "distance": ["distance"],
+            "cost": ["cost"],
+            "Created_on": Validator.get_timestamp()
+        }
+        if Validator.is_empty(parcels):
+            return jsonify({'msg': 'Parcel not found!'}), 400
+        if parcelid != parcel1['parcelid']:
+            return jsonify({'error': 'parcelID match doesnot exist'})
+        ods = [parcel1 for parcel1 in parcels
+               if parcel1['parcelid'] == parcelid]
+        ods[0]['status'] = data['status']
+        ods[0] = parcel1
+        return jsonify({'parcels': parcel1}), 200
+>>>>>>> 4b216725ceda6b1cce56dbd81305559c63a6afa6
