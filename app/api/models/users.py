@@ -97,3 +97,27 @@ class User:
         else:
             response = existing_parcel[0]
         return response
+
+    def cancel_a_parcel(parcelid):
+        data = request.get_json()
+        parcel1 = {
+            "parcelid": ["parcelid"],
+            "userid": ["userid"],
+            "tracking_number": ["tracking_number"],
+            "parcel_name": ["parcel_name"],
+            "category": ["category"],
+            "parcel_weight": ["parcel_weight"],
+            "source": ["source"],
+            "status": ["status"],
+            "destination": ["destination"],
+            "distance": ["distance"],
+            "cost": ["cost"],
+            "Created_on": Validator.get_timestamp()
+        }
+        if parcels == []:
+            return jsonify({"Error": "No parcels found"})
+        ods = [parcel1 for parcel1 in parcels
+               if parcel1['parcelid'] == parcelid]
+        ods[0]['status'] = data['status']
+        ods[0] = parcel1
+        return jsonify({'parcels': parcel1}), 200

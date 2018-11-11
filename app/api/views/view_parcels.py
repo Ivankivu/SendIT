@@ -1,3 +1,4 @@
+import flask
 from flask import Flask, jsonify, request, Response
 from app import app
 from app.api.models.parcels import Parcel, parcels, parcelid
@@ -65,3 +66,18 @@ class Viewparcels:
                 if is_not_:
                     return jsonify({'msg': 'Parcel not found!'}), 400
             return jsonify({'msg': 'Parcel not found!'}), 400
+
+    @app.route("/api/v1/parcels/<int:parcelid>/cancel",
+               methods=["GET", "PUT"])
+    def cancel_a_specific_parcel(parcelid):
+
+        if flask.request.method == 'GET':
+            for parcel1 in parcels:
+                if parcelid != parcel1['parcelid']:
+                    return jsonify({'error': 'parcelID doesnot exist'})
+                if not parcel1:
+                    return jsonify({'msg': 'Parcel not found!'}), 400
+                if parcelid == parcel1['parcelid']:
+                    return jsonify(parcel1)
+
+        # elif flask.request.method == 'PUT':
