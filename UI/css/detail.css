@@ -1,17 +1,14 @@
-#map { 
-    display: flex;
-    flex-direction: column;
-    width: 50%; 
-    height: 100%; 
-    background-color: grey; 
-  } 
+body{
+    overflow-y: scroll;
+}
   .container3{
     display: flex;
-    flex-direction:row;
+    flex-direction:column;
     overflow: hidden;
-    width:100%;
+    width:auto;
     height: 100%;
-
+    padding-left:2%;
+    padding-right:2%;
 }
 
 
@@ -46,17 +43,18 @@
 }
 
 .panel {
-    padding: 0 18px;
     background-color: white;
     max-height: 0;
-    overflow: scroll;
+    /* overflow: scroll; */
+    overflow: hidden;
     transition: max-height 0.2s ease-out;
 
 }
 .panel > div{
     border-style: double;
-    padding: 0.1%;
+    /* padding: 0.05%; */
     width: 100%;
+    margin: 0.1%;
 }
 
 .panel > div > h4{
@@ -87,11 +85,23 @@
 }
 
 #top > h2{
-    margin:3%;
+    margin:2%;
 }
 
 #top > input{
-    height:8%;
-    margin-top:1.5%;
+    height:6%;
+    margin-top:1.2%;
+}
+
+.panel > .left_order{
+    position: relative;
+    float:left;
+    width: 45%;
+}
+
+.panel > .right_order{
+    position: relative;
+    float:right;
+    width: 50%;
 }
 

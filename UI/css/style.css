@@ -45,6 +45,7 @@ body{
 
 .topbar > ul > li > a{
     color:white;
+    width:20%;
     text-decoration: none;
 }
 
@@ -193,7 +194,7 @@ body{
 .content{
     display: flex;
     flex-direction: row;
-    width:100%;
+    width:auto
 }
 .content > .ship{
     float: left;
@@ -205,20 +206,21 @@ body{
     display: flex;
     flex-direction: column;
     width:80%;
-    height: 100%;
-    padding:2%;
+    height: auto;
+    /* padding:2%; */
 }
 
 .content > .ship > form > select{
     margin: 0% 0% 5% 0%;
     width:100%;
-    height: 8%;
+    height: 6%;
     padding: 1% 0% 1% 1%;
 }
 
 .content > .ship > form > input{
     margin: 2% 0% 2% 0%;
     padding: 2%;
+    height: 6%;
 }
 
 .content > .ship > form > div > select{
@@ -240,12 +242,14 @@ body{
     padding: 2%;
     margin: 0% 2% 2% 0%;
     width:50%;
+    height: 6%;
 }
 
 /*right*/
 .content > .shipto{
     float: right;
     width: 100%;
+    height: auto;
     margin-left: 2%;
 }
 
@@ -253,20 +257,20 @@ body{
     display: flex;
     flex-direction: column;
     width:80%;
-    height: 100%;
+    height: auto;
     margin-left: 5%;
-    padding:2%;
+    /* padding:2%; */
 }
 
 .content > .shipto > form > select{
     margin: 0% 0% 5% 0%;
     width:100%;
-    height: 8%;
+    height: 6%;
     padding: 1% 0% 1% 1%;
 }
 
 .content > .shipto > form > div > select{
-    margin: 0% 0% 1% 0%;
+    margin: 0% 0% 0.5% 0%;
     width:50%;
     height: 6%;
     padding: 0% 0% 0% 1%;
@@ -281,6 +285,7 @@ body{
 .content > .shipto > form > input{
     margin: 2% 0% 2% 0%;
     padding: 2%;
+    height: 6%;
 }
 
 .content > .shipto > form > div{
@@ -295,16 +300,19 @@ body{
     padding: 2%;
     margin: 0% 2% 2% 0%;
     width:50%;
+    height: 6%;
 }
 
 #track{
     display: flex;
     flex-direction: row;
     width:100%;
-    margin: 2% 0% 0% 0%;
+    margin: 0.3% 0% 2.3% 1%;
 }
 
 #track > h3{
+
+    top: 0px; 
     margin: 1% 0% 0% 2%;
 }
 
@@ -312,5 +320,7 @@ body{
     margin-left:1%;
     padding:1%;
     height: 8%;
-    /* border-radius: 5px; */
 }
+
+
+top: 0px; 
