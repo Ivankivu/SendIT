@@ -17,31 +17,22 @@
             <a href="home.html"><img src="img/icons8-in-transit-80.png" /></a>
         </div>
         <ul>
-            <li><a href="home.html">Tracking</a></li>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="tracking.html">Tracking</a></li>
             <li class="dropdown dropbtn" onclick="myFunction()">
-                <a href="#">Shipping</a>
+                <a href="#">Order</a>
                 <div class="dropdown-content" id="myDropdown">
                     <ul>
-                        <li><a href="send_a_parcel.html">New Shipment</a></li>
-                        <li><a href="shippinghistory.html">Shipping History</a></li>
-                        <li><a href="orderdetails.html">Order Details</a></li>
+                        <li><a href="send_a_parcel.html">New Order</a></li>
+                        <li><a href="orderhistory.html">Order History</a></li>
                     </ul>
                 </div>
             </li>
-            <li class="dropdown dropbtn" onclick="upFunction()">
-                <a href="#">My Account</a>
-                <div class="dropdown-content" id="myDropup">
-                    <ul>
-                        <li><a href="#">Profile</a></li>
-                        <li><a href="index.html">Logout</a></li>
-                    </ul>
-                </div>
-            </li>
+            <li><a href="index.html">Logout</a></li>
         </ul>
     </div>
 
     <div class="content">
-        <!-- <h2>Create a Parcel Delivery Order</h2> -->
         <div class="ship">
             <form>
                 <h3>Sender *</h3>
@@ -68,23 +59,20 @@
                     </select>
                 </div>
                 <input type="text" placeholder="Full names">
-                <input type="text" placeholder="Address">
-                <input type="text" placeholder="suite, Building">
-                <div>
-                    <input type="text" placeholder="city">
-                    <input type="tel" placeholder="Postal code">
-                </div>
-
                 <div>
                     <input type="email" placeholder="Email">
                     <input type="tel" placeholder="Contact">
                 </div>
-
+                <input type="text" placeholder="Address">
+                <div>
+                    <input type="text" placeholder="city">
+                    <input type="tel" placeholder="Postal code">
+                </div>
+               
             </form>
         </div>
 
         <div class="shipto">
-
             <form>
                 <h3>Receiver *</h3>
                 <hr>
@@ -110,23 +98,18 @@
                     </select>
                 </div>
                 <input type="text" placeholder="Address">
-                <input type="text" placeholder="suite, Building">
                 <div>
                     <input type="text" placeholder="city">
                     <input type="tel" placeholder="Postal code">
                 </div>
-
                 <div>
                     <input type="email" placeholder="Email">
                     <input type="tel" placeholder="Contact">
                 </div>
-
-                <input type="submit" value="Continue">
-                <input type="submit" value="Cancel Shipment">
+                <input type="submit" value="Submit">
+                <input type="submit" value="Cancel Order">
             </form>
         </div>
-
-
     </div>
 
 </body>
