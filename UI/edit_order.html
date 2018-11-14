@@ -1,0 +1,116 @@
+<!doctype <!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>SendIT | EditOrder</title>
+    <link rel="shortcut icon" type="image/png" href="img/icons8-in-transit-40.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
+    <script src="js/map.js"></script>
+</head>
+
+<body>
+    <div class="topbar">
+        <div>
+            <a href="home.html"><img src="img/icons8-in-transit-80.png" /></a>
+        </div>
+        <ul>
+                <a href="home.html">Home</a>
+                <a href="tracking.html">Tracking</a>
+                <a class="dropdown dropbtn" onclick="myFunction()">Order
+                    <div class="dropdown-content" id="myDropdown">
+                        <ul>
+                            <a href="send_a_parcel.html">New Order</a>
+                            <a href="orderhistory.html">Order History</a>
+                        </ul>
+                    </div>
+                </a>
+                <a href="index.html">Logout</a>
+            </ul>
+    </div>
+
+    <div class="content">
+        <div class="ship">
+            <form>
+                <h3>Sender *</h3>
+                <hr>
+                <select>
+                    <option>Select Country</option>
+                    <option>America</option>
+                    <option>Uganda</option>
+                    <option>Kenya</option>
+                    <option>China</option>
+                    <option>Sudan</option>
+                    <option>Denmark</option>
+                    <option>German</option>
+                </select>
+                <div>
+                    <input type="text" placeholder="Parcel name">
+                    <select>
+                        <option>Select Category</option>
+                        <option>Perishable</option>
+                        <option>Fragile</option>
+                        <option>Hazardrous</option>
+                        <option>Weapons</option>
+                        <option>Solvets</option>
+                    </select>
+                </div>
+                <input type="text" placeholder="Full names">
+                <div>
+                    <input type="email" placeholder="Email">
+                    <input type="tel" placeholder="Contact">
+                </div>
+                <input type="text" placeholder="Address">
+                <div>
+                    <input type="text" placeholder="city">
+                    <input type="tel" placeholder="Postal code">
+                </div>
+               
+            </form>
+        </div>
+
+        <div class="shipto">
+            <form>
+                <h3>Receiver *</h3>
+                <hr>
+                <select>
+                    <option>Select Country</option>
+                    <option>America</option>
+                    <option>Uganda</option>
+                    <option>Kenya</option>
+                    <option>China</option>
+                    <option>Sudan</option>
+                    <option>Denmark</option>
+                    <option>German</option>
+                </select>
+                <div>
+                    <input type="text" placeholder="Parcel name">
+                    <select>
+                        <option>Select Category</option>
+                        <option>Perishable</option>
+                        <option>Fragile</option>
+                        <option>Hazardrous</option>
+                        <option>Weapons</option>
+                        <option>Solvets</option>
+                    </select>
+                </div>
+                <input type="text" placeholder="Address">
+                <div>
+                    <input type="text" placeholder="city">
+                    <input type="tel" placeholder="Postal code">
+                </div>
+                <div>
+                    <input type="email" placeholder="Email">
+                    <input type="tel" placeholder="Contact">
+                </div>
+                <input type="submit" value="Save">
+                <input type="submit" value="Cancel Order">
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>
