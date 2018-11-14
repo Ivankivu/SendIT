@@ -18,25 +18,51 @@
             <a href="home.html"><img src="img/icons8-in-transit-80.png" /></a>
         </div>
         <ul>
-            <li><a href="home.html">Home</a></li>
-            <li><a href="tracking.html">Tracking</a></li>
-            <li class="dropdown dropbtn" onclick="myFunction()">
-                <a href="#">Order</a>
+            <a href="home.html">Home</a>
+            <a href="tracking.html">Tracking</a>
+            <a class="dropdown dropbtn" onclick="myFunction()">
+                Order
                 <div class="dropdown-content" id="myDropdown">
                     <ul>
-                        <li><a href="send_a_parcel.html">New Order</a></li>
-                        <li><a href="orderhistory.html">Order History</a></li>
+                        <a href="send_a_parcel.html">New Order</a>
+                        <a href="orderhistory.html">Order History</a>
                     </ul>
                 </div>
-            </li>
-            <li><a href="index.html">Logout</a></li>
+            </a>
+            <a href="index.html">Logout</a>
         </ul>
     </div>
     <div class="container3">
         <div id="top">
-            <h2>Active Orders</h2><input type="button" value="New Order" onclick="window.location.replace('send_a_parcel.html')">
+            <h2>Active Orders</h2><input type="button" id="neworder" value="New Order" onclick="window.location.replace('send_a_parcel.html')">
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<input type="button" value="Cancel Order">
         </div>
-        <button class="accordion">Dell computer,Desktop PD505 i7 8th generation</button>
+
+        <div id="hide">
+            <button class="accordion" id="hide">Dell computer,Desktop PD505 i7 8th generation </button>
+            <div class="panel">
+
+                <div class="left_order">
+                    <h3>Order Details</h3>
+                    <hr>
+                    <h4><span>Order date</span>May 7, 2018</h4>
+                    <h4><span>Order # &nbsp;&nbsp;&nbsp;&nbsp;</span>SIT17265758</h4>
+                    <h4><span>Order total</span>Ushs30,000 (1 item)</h4>
+                    <!-- <input type="button" value="check status"> -->
+                </div>
+
+                <div class="right_order">
+                    <h3>Order Details</h3>
+                    <hr>
+                    <h4><span>Status</span>In-Transit</h4>
+                    <h4><span>Delivery Estimate</span> 5hrs</h4>
+                    <h4><span>Order date</span>Thursday, may 12, 2018 by 8:00pm</h4>
+                </div>
+
+            </div>
+        </div>
+
+        <button class="accordion">Section 2</button>
         <div class="panel">
 
             <div class="left_order">
@@ -49,55 +75,124 @@
             </div>
 
             <div class="right_order">
-                    <h3>Shipment Details</h3>
-                    <hr>
-                    <h4><span>Status</span>In-Transit</h4>
-                    <h4><span>Delivery Estimate</span> 5hrs</h4>
-                    <h4><span>Order date</span>Thursday, may 12, 2018 by 8:00pm</h4>
+                <h3>Order Details</h3>
+                <hr>
+                <h4><span>Status</span>In-Transit</h4>
+                <h4><span>Delivery Estimate</span> 5hrs</h4>
+                <h4><span>Order date</span>Thursday, may 12, 2018 by 8:00pm</h4>
             </div>
-
-        </div>
-
-        <button class="accordion">Section 2</button>
-        <div class="panel">
-                <div class="left_order">
-                        <h3>Order Details</h3>
-                        <hr>
-                        <h4><span>Order date</span>May 7, 2018</h4>
-                        <h4><span>Order # &nbsp;&nbsp;&nbsp;&nbsp;</span>SIT17265758</h4>
-                        <h4><span>Order total</span>Ushs30,000 (1 item)</h4>
-                        <!-- <input type="button" value="check status"> -->
-                    </div>
-        
-                    <div class="right_order">
-                            <h3>Shipment Details</h3>
-                            <hr>
-                            <h4><span>Status</span>In-Transit</h4>
-                            <h4><span>Delivery Estimate</span> 5hrs</h4>
-                            <h4><span>Order date</span>Thursday, may 12, 2018 by 8:00pm</h4>
-                    </div>
 
         </div>
 
         <button class="accordion">Section 3</button>
         <div class="panel">
-                <div class="left_order">
-                        <h3>Order Details</h3>
-                        <hr>
-                        <h4><span>Order date</span>May 7, 2018</h4>
-                        <h4><span>Order # &nbsp;&nbsp;&nbsp;&nbsp;</span>SIT17265758</h4>
-                        <h4><span>Order total</span>Ushs30,000 (1 item)</h4>
-                        <!-- <input type="button" value="check status"> -->
-                    </div>
-        
-                    <div class="right_order">
-                        <h3>Shipment Details</h3>
-                        <hr>
-                        <h4><span>Status</span>In-Transit</h4>
-                        <h4><span>Delivery Estimate</span> 5hrs</h4>
-                        <h4><span>Order date</span>Thursday, may 12, 2018 by 8:00pm</h4>
-                    </div>
+
+            <div class="left_order">
+                <h3>Order Details</h3>
+                <hr>
+                <h4><span>Order date</span>May 7, 2018</h4>
+                <h4><span>Order # &nbsp;&nbsp;&nbsp;&nbsp;</span>SIT17265758</h4>
+                <h4><span>Order total</span>Ushs30,000 (1 item)</h4>
+                <!-- <input type="button" value="check status"> -->
+            </div>
+
+            <div class="right_order">
+                <h3>Order Details</h3>
+                <hr>
+                <h4><span>Status</span>In-Transit</h4>
+                <h4><span>Delivery Estimate</span> 5hrs</h4>
+                <h4><span>Order date</span>Thursday, may 12, 2018 by 8:00pm</h4>
+            </div>
+
         </div>
+
+        <button class="accordion">Section 4</button>
+        <div class="panel">
+
+            <div class="left_order">
+                <h3>Order Details</h3>
+                <hr>
+                <h4><span>Order date</span>May 7, 2018</h4>
+                <h4><span>Order # &nbsp;&nbsp;&nbsp;&nbsp;</span>SIT17265758</h4>
+                <h4><span>Order total</span>Ushs30,000 (1 item)</h4>
+                <!-- <input type="button" value="check status"> -->
+            </div>
+
+            <div class="right_order">
+                <h3>Order Details</h3>
+                <hr>
+                <h4><span>Status</span>In-Transit</h4>
+                <h4><span>Delivery Estimate</span> 5hrs</h4>
+                <h4><span>Order date</span>Thursday, may 12, 2018 by 8:00pm</h4>
+            </div>
+
+        </div>
+
+        <button class="accordion">Section 5</button>
+        <div class="panel">
+
+            <div class="left_order">
+                <h3>Order Details</h3>
+                <hr>
+                <h4><span>Order date</span>May 7, 2018</h4>
+                <h4><span>Order # &nbsp;&nbsp;&nbsp;&nbsp;</span>SIT17265758</h4>
+                <h4><span>Order total</span>Ushs30,000 (1 item)</h4>
+                <!-- <input type="button" value="check status"> -->
+            </div>
+
+            <div class="right_order">
+                <h3>Order Details</h3>
+                <hr>
+                <h4><span>Status</span>In-Transit</h4>
+                <h4><span>Delivery Estimate</span> 5hrs</h4>
+                <h4><span>Order date</span>Thursday, may 12, 2018 by 8:00pm</h4>
+            </div>
+
+        </div>
+        <button class="accordion">Section 6</button>
+        <div class="panel">
+
+            <div class="left_order">
+                <h3>Order Details</h3>
+                <hr>
+                <h4><span>Order date</span>May 7, 2018</h4>
+                <h4><span>Order # &nbsp;&nbsp;&nbsp;&nbsp;</span>SIT17265758</h4>
+                <h4><span>Order total</span>Ushs30,000 (1 item)</h4>
+                <!-- <input type="button" value="check status"> -->
+            </div>
+
+            <div class="right_order">
+                <h3>Order Details</h3>
+                <hr>
+                <h4><span>Status</span>In-Transit</h4>
+                <h4><span>Delivery Estimate</span> 5hrs</h4>
+                <h4><span>Order date</span>Thursday, may 12, 2018 by 8:00pm</h4>
+            </div>
+
+        </div>
+
+        <button class="accordion">Section 7</button>
+        <div class="panel">
+
+            <div class="left_order">
+                <h3>Order Details</h3>
+                <hr>
+                <h4><span>Order date</span>May 7, 2018</h4>
+                <h4><span>Order # &nbsp;&nbsp;&nbsp;&nbsp;</span>SIT17265758</h4>
+                <h4><span>Order total</span>Ushs30,000 (1 item)</h4>
+                <!-- <input type="button" value="check status"> -->
+            </div>
+
+            <div class="right_order">
+                <h3>Order Details</h3>
+                <hr>
+                <h4><span>Status</span>In-Transit</h4>
+                <h4><span>Delivery Estimate</span> 5hrs</h4>
+                <h4><span>Order date</span>Thursday, may 12, 2018 by 8:00pm</h4>
+            </div>
+
+        </div>
+
     </div>
 
     <script src="js/script.js"></script>
