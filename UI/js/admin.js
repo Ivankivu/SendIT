@@ -3,27 +3,17 @@ function edit_row(no)
  document.getElementById("edit_button"+no).style.display="none";
  document.getElementById("save_button"+no).style.display="block";
 	
- var name=document.getElementById("name_row"+no);
- var type=document.getElementById("type_row"+no);
  var status=document.getElementById("status_row"+no);
 	
- var name_data=name.innerHTML;
- var type_data=type.innerHTML;
  var status_data=status.innerHTML;
 	
- name.innerHTML="<input type='text' id='name_text"+no+"' value='"+name_data+"'>";
- type.innerHTML="<input type='text' id='type_text"+no+"' value='"+type_data+"'>";
  status.innerHTML="<input type='text' id='status_text"+no+"' value='"+status_data+"'>";
 }
 
 function save_row(no)
 {
- var name_val=document.getElementById("name_text"+no).value;
- var type_val=document.getElementById("type_text"+no).value;
  var status_val=document.getElementById("status_text"+no).value;
 
- document.getElementById("name_row"+no).innerHTML=name_val;
- document.getElementById("type_row"+no).innerHTML=type_val;
  document.getElementById("status_row"+no).innerHTML=status_val;
 
  document.getElementById("edit_button"+no).style.display="block";

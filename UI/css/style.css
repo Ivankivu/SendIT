@@ -45,6 +45,7 @@ body{
     color:white;
     width:20%;
     text-decoration: none;
+    cursor: pointer;
 }
 
 /* .topbar > ul > li > a{
@@ -169,6 +170,7 @@ body{
     text-align: center;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 300%;
+    margin-top:20%;
 }
 
 .container > #right > #sidebar > form{
@@ -187,6 +189,7 @@ body{
 
 #about > #about-s{
     display: inline-block;
+   
 }
 
 #about > #about-s >hr{
@@ -332,4 +335,16 @@ body{
     margin-left:1%;
     padding:1%;
     height: 8%;
+}
+
+#top > input{
+    padding:1% 10% 3% 1%;
+    width:10%;
+    height: 6%;
+    text-align: center;
+    cursor: pointer;
+}
+
+@-moz-document url-prefix() {
+    #top > input{padding:1% 7% 2% 1%;}
 }
