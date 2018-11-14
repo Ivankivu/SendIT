@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <title>SendIT | Admin</title>
+    <link rel="shortcut icon" type="image/png" href="img/icons8-in-transit-40.png" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content galley="width=device-width,initial-scale=1,maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content galley="IE=edge">
+    <meta name="keywords" lang="en-us" content galley="foods, soft drinks, beverages, salads">
+    <link href="css/admin.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
+</head>
+
+<body id="menu">
+    <div class="topbar">
+        <div>
+            <a href="home.html"><img src="img/icons8-in-transit-80.png" /></a>
+        </div>
+        <ul id="logout">
+            <a>Welcome, Admin</a>
+            <a href="index.html" >Logout</a>
+        </ul>
+    </div>
+
+    <div class="contain">
+        <div id="admintable">
+            <table id="data_table">
+                <tr>
+                    <th>Parcel</th>
+                    <th>Source/Destination</th>
+                    <th>Status</th>
+                    <th>Edit</th>
+                </tr>
+                <tr id="row1">
+                    <td id="name_row1">Dell Desktop PC</td>
+                    <td id="type_row1">India/Uganda</td>
+                    <td id="status_row1">In-Transit</td>
+                    <td>
+                        <input type="button" id="edit_button1" value="Edit" class="edit" onclick="edit_row('1')">
+                        <input type="button" id="save_button1" value="Save" class="save" onclick="save_row('1')">
+                    </td>
+                </tr>
+                <tr id="row2">
+                    <td id="name_row2">Post Card</td>
+                    <td id="type_row2">Canada/China</td>
+                    <td id="status_row2">Delivered</td>
+                    <td>
+                        <input type="button" id="edit_button2" value="Edit" class="edit" onclick="edit_row('2')">
+                        <input type="button" id="save_button2" value="Save" class="save" onclick="save_row('2')">
+                    </td>
+
+                </tr>
+                <tr id="row3">
+                    <td id="name_row3">Legal Forms</td>
+                    <td id="type_row3">Kenya/Rwanda</td>
+                    <td id="status_row3">Arrived</td>
+                    <td>
+                        <input type="button" id="edit_button3" value="Edit" class="edit" onclick="edit_row('3')">
+                        <input type="button" id="save_button3" value="Save" class="save" onclick="save_row('3')">
+                    </td>
+
+                </tr>
+                <tr id="row4">
+                    <td id="name_row4">Chicken</td>
+                    <td id="type_row4">India</td>
+                    <td id="status_row4">Delivered</td>
+                    <td>
+                        <input type="button" id="edit_button4" value="Edit" class="edit" onclick="edit_row('4')">
+                        <input type="button" id="save_button4" value="Save" class="save" onclick="save_row('4')">
+                    </td>
+
+                </tr>
+                <tr id="row5">
+                    <td id="name_row5">Chicken</td>
+                    <td id="type_row5">India</td>
+                    <td id="status_row5">cancelled</td>
+                    <td>
+                        <input type="button" id="edit_button5" value="Edit" class="edit" onclick="edit_row('5')">
+                        <input type="button" id="save_button5" value="Save" class="save" onclick="save_row('5')">
+                    </td>
+
+                </tr>
+                <tr id="row6">
+                    <td id="name_row6">Chicken</td>
+                    <td id="type_row6">India</td>
+                    <td id="status_row6">cancelled</td>
+                    <td>
+                        <input type="button" id="edit_button6" value="Edit" class="edit" onclick="edit_row('6')">
+                        <input type="button" id="save_button6" value="Save" class="save" onclick="save_row('6')">
+                    </td>
+
+                </tr>
+                <tr id="row7">
+                    <td id="name_row7">Chicken</td>
+                    <td id="type_row7">India</td>
+                    <td id="status_row7">cancelled</td>
+                    <td>
+                        <input type="button" id="edit_button7" value="Edit" class="edit" onclick="edit_row('7')">
+                        <input type="button" id="save_button7" value="Save" class="save" onclick="save_row('7')">
+                    </td>
+
+                </tr>
+            </table>
+        </div>
+
+    </div>
+    <script src="js/admin.js"></script>
+</body>
+
+</html>

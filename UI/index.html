@@ -8,29 +8,29 @@
     <link rel="shortcut icon" type="image/png" href="img/icons8-in-transit-40.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
-    <script src="js/script.js"></script>
+    <!-- <script src="js/login.js"></script> -->
 </head>
 
 <body>
     <!-- <div class="topbar"></div> -->
     <div class="container">
-        <div id="left">
-
-            <img src="img/O9FG4R0.jpg" />
-
-        </div>
-        <div id="right">
-            <div id="sidebar">
-                <div id="image"> 
+            <div id="image"> 
                     <img src="img/icons8-in-transit-80.png"/>
                     
                 </div>
+        <div id="left">
+            
+            <img src="img/O9FG4R0.jpg" />
+        </div>
+        <div id="right">
+            <div id="sidebar">
+               
                 <h3>SendIT</h3>
                 <form action="home.html">
-                    <input type="email" placeholder="Email: e.g example@mail.com" required>
-                    <input type="password" placeholder="Password: e.g ********" required>
+                    <input type="text" placeholder="Email: e.g example@mail.com" name="username" required>
+                    <input type="password" placeholder="Password: e.g ********" name="password" required>
                     <input type="submit" value="Login">
-                    <div class="signin">
+                    <div class="signin"><a href="admin.html">Admin</a>
                             <p>Don't have an account? <a href="signup.html">Sign Up</a>.</p>
                         </div>
                 </form>

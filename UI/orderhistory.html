@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>SendIT | History</title>
+    <title>SendIT | OrderHistory</title>
     <link rel="shortcut icon" type="image/png" href="img/icons8-in-transit-40.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
@@ -19,19 +19,18 @@
             <a href="home.html"><img src="img/icons8-in-transit-80.png" /></a>
         </div>
         <ul>
-            <li><a href="home.html">Home</a></li>
-            <li><a href="tracking.html">Tracking</a></li>
-            <li class="dropdown dropbtn" onclick="myFunction()">
-                <a href="#">Order</a>
-                <div class="dropdown-content" id="myDropdown">
-                    <ul>
-                        <li><a href="send_a_parcel.html">New Order</a></li>
-                        <li><a href="orderhistory.html">Order History</a></li>
-                    </ul>
-                </div>
-            </li>
-            <li><a href="index.html">Logout</a></li>
-        </ul>
+                <a href="home.html">Home</a>
+                <a href="tracking.html">Tracking</a>
+                <a class="dropdown dropbtn" onclick="myFunction()">Order
+                    <div class="dropdown-content" id="myDropdown">
+                        <ul>
+                            <a href="send_a_parcel.html">New Order</a>
+                            <a href="orderhistory.html">Order History</a>
+                        </ul>
+                    </div>
+                </a>
+                <a href="index.html">Logout</a>
+            </ul>
     </div>
     <div class="container2">
         <div id="track">

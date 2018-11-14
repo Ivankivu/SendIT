@@ -1,0 +1,77 @@
+body{
+    overflow-x: hidden;
+}
+  #admintable table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin: 0 auto;
+    margin-top: 0.6%;
+    width: 80%;
+    border: 1px solid #ddd;
+    overflow-y: scroll;
+  }
+  
+  th, td {
+    text-align: left;
+    padding: 16px;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f2f2f2
+  }
+  #data_table tr td input{
+    border:1px solid #534a35;
+    border-color: #534a35;
+    border-radius: 10px;
+    height:30px;
+  }
+ 
+  .edit{
+    border:none;
+    border-radius: 5px;
+    height: 30px;
+    width:50px;
+    background-color:orange;
+  } 
+  .save{
+    border:none;
+    border-radius: 5px;
+    height: 30px;
+    width:50px;
+    background-color:green;
+   }
+    /*
+  .delete{
+    border:none;
+    border-radius: 5px;
+    height: 30px;
+    width:50px;
+    background-color:red;
+  }
+  
+  .add{
+    border:none;
+    border-radius: 5px;
+    height: 30px;
+    width:100px;
+    margin-top:-100px;
+    background-color:grey;
+  }
+  
+  #new_name,#new_type,#new_status{
+    border-color: #534a35;
+    background-color: #f7d794;
+  }
+  
+  #new_name:focus-visible,#new_type:focus-visible,#new_status:focus-visible{
+    border-radius: 10px;
+    border-color: #534a35;
+  } */
+
+
+  #logout{
+      position: absolute;
+      float:right;
+      left:53%;
+
+  }
