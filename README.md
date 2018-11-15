@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/Ivankivu/SendIT.svg?branch=e4129693-sendit-api)](https://travis-ci.org/Ivankivu/SendIT) 
-[![Maintainability](https://api.codeclimate.com/v1/badges/e98ad700ef47397de5a0/maintainability)](https://codeclimate.com/github/Ivankivu/SendIT/maintainability) [![Coverage Status](https://coveralls.io/repos/github/Ivankivu/SendIT/badge.svg?branch=161794702-e4129693-sendit-api)](https://coveralls.io/github/Ivankivu/SendIT?branch=161794702-e4129693-sendit-api) [![codecov](https://codecov.io/gh/Ivankivu/SendIT/branch/e4129693-sendit-api/graph/badge.svg)](https://codecov.io/gh/Ivankivu/SendIT)
+[![Maintainability](https://api.codeclimate.com/v1/badges/e98ad700ef47397de5a0/maintainability)](https://codeclimate.com/github/Ivankivu/SendIT/maintainability) [![Coverage Status](https://coveralls.io/repos/github/Ivankivu/SendIT/badge.svg?branch=e4129693-sendit-api)](https://coveralls.io/github/Ivankivu/SendIT?branch=e4129693-sendit-api) [![codecov](https://codecov.io/gh/Ivankivu/SendIT/branch/e4129693-sendit-api/graph/badge.svg)](https://codecov.io/gh/Ivankivu/SendIT)
 
 # SendIT
 
@@ -109,6 +109,9 @@ This test block above tests to check if this particular parcel does exist in the
 | PUT /parcels/<parcelId>/cancel | [/api/v1/parcels/<parcelId>](https://sendit-api-v1.herokuapp.com/api/v1/parcels/1/cancel) | Cancel the specific parcel delivery order|
 | POST /parcels | [/api/v1/parcels](https://sendit-api-v1.herokuapp.com/api/v1/parcels) | Create a parcel delivery order |
 | PUT /parcels/<parcelId>/cancel | [/api/v1/parcels/<parcelId>/cancel](https://sendit-api-v1.herokuapp.com/api/v1/parcels/1/cancel) | Cancel the specific parcel delivery order |
+| GET /parcels | [/api/v1/parcels](https://sendit-api-v1.herokuapp.com/api/v1/parcel) | Fetch all parcel delivery orders |
+| PUT /parcels/<parcelId>/cancel| [/api/v2/users/orders](https://sendit-api-v1.herokuapp.com/api/v1/parcels/1/cancel) | Cancel the specific parcel delivery order|
+| POST /parcels| [/api/v2/users/orders](https://sendit-api-v1.herokuapp.com/api/v1/parcels) | Create a parcel delivery order |
 
 ## Authors
 

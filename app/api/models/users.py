@@ -23,8 +23,8 @@ class User:
 
     def signup_user(self):
         data = request.get_json()
-        uname = data.get("username")
-        pwd = data.get("password")
+        username = data.get("username")
+        password = data.get("password")
 
         add_user = {
             "userid": self.userid,
