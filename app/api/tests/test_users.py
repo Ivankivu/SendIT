@@ -28,24 +28,10 @@ class TestUser(unittest.TestCase):
 
     def test_user_added_successfully(self):
         result = self.client.post('api/v1/users',
-<<<<<<< HEAD
                                   content_type='application/json')
         self.assertEqual(result.status_code, 404)
-=======
-                                  content_type='application/json',
-                                  data=json.dumps(self.object.__dict__)
-                                  )
-        data = json.loads(result.data)
-        self.assertTrue('User created successfully', 200)
-        # self.assertEqual(result.status_code, 201)
->>>>>>> e4129693-sendit-api
 
     def test_getting_user_users(self):
         result = self.client.get('api/v1/users',
                                  content_type='application/json')
-<<<<<<< HEAD
         self.assertEqual(404, result.status_code, msg="No found users")
-=======
-        self.assertEqual(200, result.status_code, msg="found users")
-
->>>>>>> e4129693-sendit-api

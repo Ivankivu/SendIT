@@ -40,8 +40,4 @@ class Testparcels(unittest.TestCase):
     def test_getting_Parcel_parcels(self):
         result = self.client.get('api/v1/parcels',
                                  content_type='application/json')
-<<<<<<< HEAD
         self.assertEqual(301, result.status_code, msg="found parcels")
-=======
-        self.assertEqual(200, result.status_code, msg="found parcels")
->>>>>>> e4129693-sendit-api
