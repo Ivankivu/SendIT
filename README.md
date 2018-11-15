@@ -108,8 +108,7 @@ This test block above tests to check if this particular parcel does exist in the
 |GET /parcel/<parcelId> | [/api/v1/parcels/<parcelId>](https://sendit-api-v1.herokuapp.com/api/v1/parcels/1) | Fetch a specific parcel delivery order |
 | PUT /parcels/<parcelId>/cancel | [/api/v1/parcels/<parcelId>](https://sendit-api-v1.herokuapp.com/api/v1/parcels/1/cancel) | Cancel the specific parcel delivery order|
 | POST /parcels | [/api/v1/parcels](https://sendit-api-v1.herokuapp.com/api/v1/parcels) | Create a parcel delivery order |
-| 
-PUT /parcels/<parcelId>/cancel | [/api/v1/parcels/<parcelId>/cancel](https://sendit-api-v1.herokuapp.com/api/v1/parcels/1/cancel) | Cancel the specific parcel delivery order |
+| PUT /parcels/<parcelId>/cancel | [/api/v1/parcels/<parcelId>/cancel](https://sendit-api-v1.herokuapp.com/api/v1/parcels/1/cancel) | Cancel the specific parcel delivery order |
 
 ## Authors
 
