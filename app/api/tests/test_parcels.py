@@ -1,7 +1,7 @@
 import unittest
 from flask import Response, json
 from app import app
-from app.api.models.parcels import Parcel, parcelid, parcels
+from app.api.models.parcels import Parcel, parcels
 from app.api.views.view_parcels import Viewparcels
 from app.api.models.users import User
 from app.utils import Validator
@@ -40,4 +40,4 @@ class Testparcels(unittest.TestCase):
     def test_getting_Parcel_parcels(self):
         result = self.client.get('api/v1/parcels',
                                  content_type='application/json')
-        self.assertEqual(200, result.status_code, msg="found parcels")
+        self.assertEqual(301, result.status_code, msg="found parcels")

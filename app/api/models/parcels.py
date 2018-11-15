@@ -1,7 +1,6 @@
 from app.utils import Validator
 
 parcels = []
-parcelid = Validator.auto_id(parcels)
 
 
 class Parcel:
@@ -17,4 +16,4 @@ class Parcel:
         self.distance = kwargs.get("distance")
         self.cost = kwargs.get("cost")
         self.status = kwargs.get("status")
-        self.created_on = kwargs.get("craeted_on")
+        self.created_on = kwargs.get("created_on")

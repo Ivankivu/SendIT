@@ -1,29 +1,82 @@
-from flask import Flask, jsonify, request, Response
+import uuid
+import datetime
+from flask import Flask, jsonify, request, Response, json, make_response
 from app import app
-from app.api.models.parcels import Parcel, parcels, parcelid
-from app.api.models.users import User, users, userid
+from app.api.models.parcels import Parcel, parcels
+from app.api.models.users import User, userid, users, parcelid
 from app.utils import Validator
+from flask_jwt_extended import (
+    JWTManager, jwt_required, create_access_token,
+    get_jwt_identity
+)
+
+app.config['JWT_SECRET_KEY'] = 'andela'
+jwt = JWTManager(app)
+
+
+class ViewUser:
+
+    @app.route("/api/v1/users/signup", methods=["POST"])
+    def signup():
+
+        info = request.get_json()
+
+        userid = info.get("userid")
+        username = info.get("username")
+        email = info.get("email")
+        password = info.get("password")
+        created_on = info.get("password")
+
+        new_user = User(
+            userid=str(uuid.uuid1()),
+            username=username,
+            email=email,
+            password=password,
+            created_on=Validator.get_timestamp()
+        )
+        response = User.signup_user(new_user)
+        return jsonify(response), 201
+
+    @app.route('/api/v1/users/login', methods=['GET'])
+    def login():
+
+        info = request.get_json()
+
+        username = info.get('username', None)
+        password = info.get('password', None)
+
+        if not username:
+            return jsonify({"msg": "Missing username"}), 400
+        if not password:
+            return jsonify({"msg": "Missing password"}), 400
+
+        if username != 'test' or password != 'test':
+            return jsonify({"msg": "Bad username or password"}), 401
+
+        access_token = create_access_token(identity=username)
+        return jsonify(access_token=access_token), 200
 
 
 class Viewparcels:
 
     @app.route("/", methods=["GET"])
+    @jwt_required
     def Home():
-        return jsonify({"msg": "Welcome to SendIT"})
+        current_user = get_jwt_identity()
+        return jsonify("Welcome to SendIT", current_user), 200
 
     @app.route("/api/v1/parcels", methods=["GET"])
+    @app.route("/api/v1/parcels/", methods=["GET"])
     def get_all_parcels():
         response = User.get_parcels()
         return jsonify(response)
 
     @app.route("/api/v1/parcels", methods=["POST"])
     def add_parcel():
-        if not request.get_json():
-            return jsonify({"message": "Request should be json"}), 400
+
         info = request.get_json()
 
-        parcelid = Validator.auto_id(parcels)
-        userid = Validator.auto_id(users)
+        parcelid = len(parcels)+1
         tracking_number = info.get("tracking_number")
         parcel_name = info.get("parcel_name")
         category = info.get("category")
@@ -56,6 +109,7 @@ class Viewparcels:
     ''' This endpoint helps to retrieve a single parcel from the list.'''
 
     @app.route("/api/v1/parcels/<int:parcelid>", methods=["GET"])
+    @app.route("/api/v1/parcels/<int:parcelid>/", methods=["GET"])
     def get_parcel(parcelid):
             for parcel in parcels:
                 if parcelid == parcel['parcelid']:
@@ -64,4 +118,31 @@ class Viewparcels:
                     return jsonify({'error': 'Id doesnot exist'})
                 if is_not_:
                     return jsonify({'msg': 'Parcel not found!'}), 400
+                if not parcelid:
+                    return jsonify({'error': 'Field cannot'}), 404
             return jsonify({'msg': 'Parcel not found!'}), 400
+
+    @app.route("/api/v1/users/<int:userid>/parcels", methods=["GET"])
+    @app.route("/api/v1/users/<int:userid>/parcels/", methods=["GET"])
+    def get_parcels_from_single_user(userid):
+            for parcel in parcels:
+                if userid == parcel['userid']:
+                    return jsonify(parcels)
+                if userid != parcel['userid']:
+                    return jsonify({'error': 'User doesnot exist'})
+                if Validator.is_empty:
+                    return jsonify({
+                        'msg': 'Users and parcels not found!'
+                        }), 400
+            return jsonify({
+                'msg': 'Parcels not found!'
+                }), 400
+
+    @app.route("/api/v1/parcels/<int:parcelid>/cancel", methods=["PUT"])
+    def cancel_order(parcelid):
+        response = User.change_parcel_status(parcelid)
+        return response
+
+    @app.errorhandler(404)
+    def not_found(e):
+        return '', 404

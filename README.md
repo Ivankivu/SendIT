@@ -32,13 +32,15 @@ SendIT is a courier service that helps users deliver parcels to different destin
 
 ```python
 {
-        "category": "pen",
+        "category": "food",
         "cost": 360,
         "destination": "Seeta",
         "distance": 23,
-        "parcel_name": "nice clear",
-        "parcel_weight": "23mg",
-        "source": "kampala"
+        "parcel_name": "fish",
+        "parcel_weight": 23,
+        "source": "kampala",
+        "status": "in-transist",
+        "tracking_number": 234087
     }
 ```
 
@@ -97,6 +99,14 @@ def test_parcel_exists(self):
 
 This test block above tests to check if this particular parcel does exist in the list
 ```
+
+# API routes and their actions
+
+| REQUEST | ROUTE | FUNCTIONALITY |
+| ------- | ----- | ------------- |
+| GET /parcels | [/api/v1/parcels](https://sendit-api-v1.herokuapp.com/api/v1/parcel) | Fetch all parcel delivery orders |
+| PUT /parcels/<parcelId>/cancel| [/api/v2/users/orders](https://sendit-api-v1.herokuapp.com/api/v1/parcels/1/cancel) | Cancel the specific parcel delivery order|
+| POST /parcels| [/api/v2/users/orders](https://sendit-api-v1.herokuapp.com/api/v1/parcels) | Create a parcel delivery order |
 
 ## Authors
 

@@ -2,6 +2,8 @@ venv
 venv/
 .pytest_cache
 .pytest_cache/
+.cache
+.cache/
 .vscode
 .vscode/
 __pycache__
