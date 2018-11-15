@@ -33,7 +33,7 @@ class User:
             "password": self.password
         }
 
-        existing_user = [user for user in users if user['username'] == uname]
+        existing_user = [user for user in users if user['username'] == username]
 
         if not Validator.is_empty(existing_user):
             message = {"erro": "username already exists!"}
@@ -46,6 +46,13 @@ class User:
                     "message": add_user
                     }, 201
         return message
+    
+    # def login_user(self, username, password):
+    #     data = request.get_json()
+    #     username = data.get("username")
+    #     password = data.get("password")
+
+    #     if 
 
     def is_admin(self):
         return self.admin

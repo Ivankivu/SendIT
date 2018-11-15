@@ -24,6 +24,11 @@ class Testparcels(unittest.TestCase):
             parcel_weight=23,
             source="kampala"
         )
+    
+    def test_welcome_message(self):
+        response = self.client.get('/')
+        self.assertEqual(response.status_code, 401)
+        self.assertIn('Welcome to SendIT.', str(response.data))
 
     def test_parcel_exists(self):
         parcel = Parcel(parcelid=1, category="pen", cost=360,

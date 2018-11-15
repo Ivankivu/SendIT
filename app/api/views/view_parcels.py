@@ -50,7 +50,7 @@ class ViewUser:
         if not password:
             return jsonify({"msg": "Missing password"}), 400
 
-        if username != 'test' or password != 'test':
+        if username != username or password != password:
             return jsonify({"msg": "Bad username or password"}), 401
 
         access_token = create_access_token(identity=username)
@@ -126,7 +126,7 @@ class Viewparcels:
                     return jsonify({'msg': 'Parcel not found!'}), 400
                 if not parcelid:
                     return jsonify({'error': 'Field cannot'}), 404
-            return jsonify({'msg': 'Parcel not found!'}), 400
+            return jsonify({'msg': 'Parcel with this ID not found!'}), 400
 
 
     @app.route("/api/v1/users/<int:userid>/parcels", methods=["GET"])
