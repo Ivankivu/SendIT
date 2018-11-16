@@ -32,15 +32,12 @@ class User:
             "email": self.email,
             "password": self.password
         }
-
         existing_user = [user for user in users if user['username'] == username]
-
         if not Validator.is_empty(existing_user):
             message = {"erro": "username already exists!"}
             return message
         else:
             users.append(add_user)
-
         message = {
                     "message": "Account was created successfully!",
                     "message": add_user

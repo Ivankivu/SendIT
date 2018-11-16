@@ -35,15 +35,18 @@ class ViewUser:
             created_on=Validator.get_timestamp()
         )
         response = User.signup_user(new_user)
-        return jsonify(response), 201
+        access_token = create_access_token(identity=username)
+        return jsonify(access_token=access_token), 200
+        # return jsonify(response), 201
 
-    @app.route('/api/v1/users/login', methods=['GET'])
+    @app.route('/api/v1/users/login', methods=['POST'])
     def login():
 
         info = request.get_json()
 
         username = info.get('username', None)
         password = info.get('password', None)
+        token = info.get('token')
 
         if not username:
             return jsonify({"msg": "Missing username"}), 400
@@ -52,18 +55,17 @@ class ViewUser:
 
         if username != username or password != password:
             return jsonify({"msg": "Bad username or password"}), 401
+        
+        return jsonify({'msg': 'user logged in!'})
 
-        access_token = create_access_token(identity=username)
-        return jsonify(access_token=access_token), 200
-
-
+        
 class Viewparcels:
 
     @app.route("/", methods=["GET"])
     @jwt_required
     def Home():
-        current_user = get_jwt_identity()
-        return jsonify("Welcome to SendIT", current_user), 200
+        # current_user = get_jwt_identity()
+        return jsonify('Welcome to SendIT'), 200
 
     @app.route("/api/v1/parcels/", methods=["GET"])
     @app.route("/api/v1/parcels", methods=["GET"])
@@ -115,7 +117,7 @@ class Viewparcels:
     '''
 
     @app.route("/api/v1/parcels/<int:parcelid>", methods=["GET"])
-    @app.route("/api/v1/parcels/<int:parcelid>/", methods=["GET"])
+    @jwt_required
     def get_parcel(parcelid):
             for parcel in parcels:
                 if parcelid == parcel['parcelid']:
@@ -130,7 +132,6 @@ class Viewparcels:
 
 
     @app.route("/api/v1/users/<int:userid>/parcels", methods=["GET"])
-    @app.route("/api/v1/users/<int:userid>/parcels/", methods=["GET"])
     def get_parcels_from_single_user(userid):
             for parcel in parcels:
                 if userid == parcel['userid']:
@@ -146,6 +147,7 @@ class Viewparcels:
                 }), 400
 
     @app.route("/api/v1/parcels/<int:parcelid>/cancel", methods=["PUT"])
+    @jwt_required
     def cancel_order(parcelid):
         response = User.change_parcel_status(parcelid)
         return response
