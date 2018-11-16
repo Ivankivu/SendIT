@@ -34,7 +34,7 @@ class User:
         }
         existing_user = [user for user in users if user['username'] == username]
         if not Validator.is_empty(existing_user):
-            message = {"erro": "username already exists!"}
+            message = {"error": "username already exists!"}
             return message
         else:
             users.append(add_user)
@@ -44,12 +44,6 @@ class User:
                     }, 201
         return message
     
-    # def login_user(self, username, password):
-    #     data = request.get_json()
-    #     username = data.get("username")
-    #     password = data.get("password")
-
-    #     if 
 
     def is_admin(self):
         return self.admin
