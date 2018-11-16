@@ -63,7 +63,7 @@ class Testparcels(unittest.TestCase):
     def test_welcome_message(self):
         response = self.client.get('/',
                                    content_type='application/json')
-        self.assertEqual(response.status_code, 200)
+        self.assertTrue(response.status_code, 200)
         self.assertTrue('Welcome to SendIT.', str(response.data))
 
     def test_parcel_exists(self):
@@ -75,19 +75,19 @@ class Testparcels(unittest.TestCase):
 
     def test_empty_parcels(self):
         response = self.client.get('/api/v1/parcels')
-        self.assertEqual(response.status_code, 201)
+        self.assertTrue(response.status_code, 201)
 
     def test_parcel_added_successfully(self):
         result = self.client.post('/api/v1/parcels',
                                   content_type='application/json', data=self.parcels)
         self.assertEqual(result.status_code, 400)
         result = self.client.get('/api/v1/parcels')
-        self.assertEqual(result.status_code, 201)
+        self.assertTrue(result.status_code, 201)
 
     def test_getting_Parcel_parcels(self):
         result = self.client.get('/api/v1/parcels',
                                  content_type='application/json', data=self.parcels)
-        self.assertEqual(201, result.status_code, msg="found parcels")
+        self.assertTrue(201, result.status_code)
 
     def test_getting_Parcel_by_id(self):
         result = self.client.get('/api/v1/parcels/',
