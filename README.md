@@ -32,13 +32,15 @@ SendIT is a courier service that helps users deliver parcels to different destin
 
 ```python
 {
-        "category": "pen",
+        "category": "food",
         "cost": 360,
         "destination": "Seeta",
         "distance": 23,
-        "parcel_name": "nice clear",
-        "parcel_weight": "23mg",
-        "source": "kampala"
+        "parcel_name": "fish",
+        "parcel_weight": 23,
+        "source": "kampala",
+        "status": "in-transist",
+        "tracking_number": 234087
     }
 ```
 
@@ -102,6 +104,11 @@ This test block above tests to check if this particular parcel does exist in the
 
 | REQUEST | ROUTE | FUNCTIONALITY |
 | ------- | ----- | ------------- |
+| GET /parcels | [/api/v1/parcels](https://sendit-api-v1.herokuapp.com/api/v1/parcels) | Fetch all parcel delivery orders |
+|GET /parcel/<parcelId> | [/api/v1/parcels/<parcelId>](https://sendit-api-v1.herokuapp.com/api/v1/parcels/1) | Fetch a specific parcel delivery order |
+| PUT /parcels/<parcelId>/cancel | [/api/v1/parcels/<parcelId>](https://sendit-api-v1.herokuapp.com/api/v1/parcels/1/cancel) | Cancel the specific parcel delivery order|
+| POST /parcels | [/api/v1/parcels](https://sendit-api-v1.herokuapp.com/api/v1/parcels) | Create a parcel delivery order |
+| PUT /parcels/<parcelId>/cancel | [/api/v1/parcels/<parcelId>/cancel](https://sendit-api-v1.herokuapp.com/api/v1/parcels/1/cancel) | Cancel the specific parcel delivery order |
 | GET /parcels | [/api/v1/parcels](https://sendit-api-v1.herokuapp.com/api/v1/parcel) | Fetch all parcel delivery orders |
 | PUT /parcels/<parcelId>/cancel| [/api/v2/users/orders](https://sendit-api-v1.herokuapp.com/api/v1/parcels/1/cancel) | Cancel the specific parcel delivery order|
 | POST /parcels| [/api/v2/users/orders](https://sendit-api-v1.herokuapp.com/api/v1/parcels) | Create a parcel delivery order |

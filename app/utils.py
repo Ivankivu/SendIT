@@ -1,17 +1,20 @@
 import string
 from datetime import datetime
-from flask import Flask
+from flask import Flask, jsonify
 
 
 class Validator:
 
+    ID = 0
+    _list = []
+
     def auto_id(_list):
-        global id
+        global ID
         if len(_list) == 0:
-            id = len(_list) + 1
+            ID = len(_list) + 1
         else:
-            id = id + 1
-        return id
+            userid = ID + 1
+        return ID
 
     def is_empty(item_list):
         if len(item_list) == 0:
