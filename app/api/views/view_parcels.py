@@ -7,11 +7,21 @@ from app.api.models.users import User, userid, users, parcelid
 from app.utils import Validator
 from flask_jwt_extended import (
     JWTManager, jwt_required, create_access_token,
-    get_jwt_identity
+    jwt_refresh_token_required, create_refresh_token,
+    get_jwt_identity, set_access_cookies,
+    set_refresh_cookies, unset_jwt_cookies
 )
 
-app.config['JWT_SECRET_KEY'] = 'andela'
 jwt = JWTManager(app)
+
+app.config['JWT_SECRET_KEY'] = 'andela'
+app.config['JWT_TOKEN_LOCATION'] = ['cookies']
+app.config['JWT_ACCESS_COOKIES'] = '/api/v1/'
+app.config['JWT_COOKIE_CRSF_PROTECTION'] = False
+app.config['RESTPLUS_VALIDATE'] = True
+
+
+token_expire = datetime.timedelta(days=2)
 
 
 class ViewUser:
@@ -35,9 +45,7 @@ class ViewUser:
             created_on=Validator.get_timestamp()
         )
         response = User.signup_user(new_user)
-        access_token = create_access_token(identity=username)
-        return jsonify(access_token=access_token), 200
-        # return jsonify(response), 201
+        return jsonify(response), 201
 
     @app.route('/api/v1/users/login', methods=['POST'])
     def login():
@@ -46,17 +54,36 @@ class ViewUser:
 
         username = info.get('username', None)
         password = info.get('password', None)
-        token = info.get('token')
 
-        if not username:
-            return jsonify({"msg": "Missing username"}), 400
-        if not password:
-            return jsonify({"msg": "Missing password"}), 400
+        for user in users:
+            if user["username"] != username or user["password"] != password:
+                if users == 0:
+                    return jsonify({'msg': 'No users found'})
+                return jsonify({'login': False})
 
-        if username != username or password != password:
-            return jsonify({"msg": "Bad username or password"}), 401
+        access_token = create_access_token(identity=username)
+        refresh_token = create_refresh_token(identity=username)
+
+        response = jsonify({'login': True})
+        set_access_cookies(response, access_token)
+        set_refresh_cookies(response, refresh_token)
+        return response, 200
+
+    @app.route('/api/v1/users/refresh', methods=["GET"])
+    @jwt_refresh_token_required
+    def refresh():
+        current_user = get_jwt_identity()
+        access_token = create_access_token(identity=current_user)
         
-        return jsonify({'msg': 'user logged in!'})
+        response = jsonify({'refresh': True})
+        set_access_cookies(response, access_token)
+        return response, 200
+
+    @app.route('/api/v1/users/logout', methods=["POST"])
+    def logout():
+        response = jsonify({'Logout': True})
+        unset_jwt_cookies(response)
+        return response, 200
 
         
 class Viewparcels:
@@ -67,9 +94,8 @@ class Viewparcels:
         # current_user = get_jwt_identity()
         return jsonify('Welcome to SendIT'), 200
 
-    @app.route("/api/v1/parcels/", methods=["GET"])
+
     @app.route("/api/v1/parcels", methods=["GET"])
-    @app.route("/api/v1/parcels/", methods=["GET"])
     def get_all_parcels():
         response = User.get_parcels()
         if response == []:
@@ -78,6 +104,7 @@ class Viewparcels:
             return jsonify(response)
 
     @app.route("/api/v1/parcels", methods=["POST"])
+    @jwt_required
     def add_parcel():
 
         info = request.get_json()
