@@ -27,16 +27,18 @@ class TestUser(unittest.TestCase):
 
     def test_user_exists(self):
         user = User(userid=1, username="ivan", email="ivan@example.com",
-                    admin=True, password="andela14")
+                    password="andela14")
         self.assertTrue(user)
 
     def test_user_added_successfully(self):
-        result = self.client.post('/api/v1/users',
+        result = self.client.post('/api/v1/users', json = {"username":"ivan", "email":"ivan@example.com",
+                                 "password":"andela14"},
                                   content_type='application/json')
         self.assertEqual(result.status_code, 404)
 
     def test_getting_user_users(self):
-        result = self.client.get('/api/v1/users',
+        result = self.client.get('/api/v1/users', json = {"username":"ivan", "email":"ivan@example.com",
+                                 "password":"andela14"},
                                  content_type='application/json')
         self.assertEqual(404, result.status_code, msg="No found users")
 
@@ -79,8 +81,8 @@ class Testparcels(unittest.TestCase):
 
     def test_parcel_added_successfully(self):
         result = self.client.post('/api/v1/parcels',
-                                  content_type='application/json', data=self.parcels)
-        self.assertEqual(result.status_code, 400)
+                content_type='application/json', data=self.parcels)
+        self.assertEqual(result.status_code, 401)
         result = self.client.get('/api/v1/parcels')
         self.assertTrue(result.status_code, 201)
 
@@ -90,6 +92,6 @@ class Testparcels(unittest.TestCase):
         self.assertTrue(201, result.status_code)
 
     def test_getting_Parcel_by_id(self):
-        result = self.client.get('/api/v1/parcels/',
+        result = self.client.get('/api/v1/parcels/1',
                                  content_type='application/json', data=self.parcels)
-        self.assertEqual(200, result.status_code, msg="found parcel")
+        self.assertEqual(401, result.status_code, msg="not found parcel")
