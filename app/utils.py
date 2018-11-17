@@ -5,17 +5,6 @@ from flask import Flask, jsonify
 
 class Validator:
 
-    ID = 0
-    _list = []
-
-    def auto_id(_list):
-        global ID
-        if len(_list) == 0:
-            ID = len(_list) + 1
-        else:
-            userid = ID + 1
-        return ID
-
     def is_empty(item_list):
         if len(item_list) == 0:
             return True
