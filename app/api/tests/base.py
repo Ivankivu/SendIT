@@ -20,12 +20,12 @@ class BaseTestCase(unittest.TestCase):
         with DBconnect() as cursor:
             cursor.execute("CREATE TABLE IF NOT EXISTs users( user_id SERIAL PRIMARY KEY, username VARCHAR(100) NOT NULL, email VARCHAR(100) NOT NULL UNIQUE, password VARCHAR(12) NOT NULL, role VARCHAR(6) NOT NULL)")
 
-    # def tearDown(self):
-    #     """
-    #     Method to drop tables after the test is run
-    #     """
-    #     with DBconnect() as cursor:
-    #         cursor.execute("DROP TABLE IF EXISTS users CASCADE")
+    def tearDown(self):
+        """
+        Method to drop tables after the test is run
+        """
+        with DBconnect() as cursor:
+            cursor.execute("DROP TABLE IF EXISTS users CASCADE")
 
     def signup_user(self, username, email, password, role):
         """
