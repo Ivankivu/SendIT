@@ -50,8 +50,7 @@ class BaseTestCase(unittest.TestCase):
                                 email=email,
                                 password=password,
                                 role=role
-                                )
-                                )
+                                ))
                                 )
 
     def test_if_json_data(self):
