@@ -9,8 +9,12 @@ class DBconnect:
 
     def __enter__(self):
         try:
+            # if app_config['testing']:
+            #     self.conn = psycopg2.connect("dbname = 'test_sendit' user = 'postgres' host = 'localhost' password = 'postgres' port = '5432'")
+            #     self.cursor = self.conn.cursor()
+            #     return self.cursor
             if app_config['testing']:
-                self.conn = psycopg2.connect("dbname = 'test_sendit' user = 'postgres' host = 'localhost' password = 'postgres' port = '5432'")
+                self.conn = psycopg2.connect("dbname = 'd2n8htlj0r4mqh' user = 'nqmldnviazkcxq' host = 'ec2-54-83-8-246.compute-1.amazonaws.com' password = 'ea9c2af750bbf92b7f303605148117f4d722f51a1ff9eee048a173bfd0783ad8' port = '5432'")
                 self.cursor = self.conn.cursor()
                 return self.cursor
             elif app_config['production']:
