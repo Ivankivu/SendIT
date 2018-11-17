@@ -58,7 +58,7 @@ class BaseTestCase(unittest.TestCase):
             Test for json data
         """
         with self.client:
-            response = self.signup_user("joy", "joy@live.com", "andela1202", "admin")
+            response = self.signup_user("sara", "dat@live.com", "andela1202", "admin")
             self.assertTrue(response.content_type == 'application/json')
             self.assertEqual(201, response.status_code)
             self.assertNotEqual(502, response.status_code)
