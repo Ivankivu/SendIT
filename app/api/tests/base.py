@@ -12,8 +12,8 @@ class BaseTestCase(unittest.TestCase):
         """
         Create an instance of the app with the testing configuration
         """
-        app.config.from_object(app_config["testing"])
-        return app
+        app.config.from_object(app_config["testing"])  
+        return app  
 
     def setUp(self):
         self.client = app.test_client(self)

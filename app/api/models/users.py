@@ -1,10 +1,13 @@
 import string
 import logging
+import re
 from flask import Flask, request, Response, jsonify, make_response
+from app import app
 from app.api.database.db_config import DBconnect
+from app.utils import Validator
 
 
-class User:
+class User:  # pragma: no cover
     """ Creating User """
     def __init__(self, **kwargs):
         self.username = kwargs.get("username")
@@ -22,6 +25,10 @@ class User:
         sql = '''INSERT INTO  users(username, email, password, role) VALUES(%s, %s, %s, %s)'''
 
         try:
+            if Validator.is_empty(username):
+                return jsonify({'msg': 'Empty values. Please enter valid credentials'})
+            if Validator.password(password):
+                return jsonify({'msg': 'Invalid entry. Please enter a valid username'})
             with DBconnect() as cursor:
 
                 cursor.execute("SELECT * FROM users WHERE username = '%s'" % username)
@@ -38,3 +45,5 @@ class User:
             logging.error(e)
             return make_response(jsonify({'message': str(e)}), 500)
 
+    def login():
+        pass
