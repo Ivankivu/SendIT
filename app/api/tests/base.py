@@ -60,5 +60,5 @@ class BaseTestCase(unittest.TestCase):
         with self.client:
             response = self.signup_user("joy", "joy@live.com", "andela1202", "admin")
             self.assertTrue(response.content_type == 'application/json')
-            self.assertEqual(200, response.status_code)
+            self.assertEqual(201, response.status_code)
             self.assertNotEqual(502, response.status_code)
