@@ -8,7 +8,7 @@ from app.api.database.db_config import DBconnect
 class ViewUser:
 
     @app.route('/', methods=['GET'])
-    def signup():
+    def Home():
         return("Welcome to SendIT API v2")
 
     @app.route('/api/v2/auth/signup', methods=['GET', 'POST'])
