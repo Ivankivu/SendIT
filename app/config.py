@@ -7,6 +7,7 @@ class Config(object):
     """
     Common configurations
     """
+
     TESTING = False
     DEBUG = False
     SECRET_KEY = os.getenv('SECRET_KEY', 'andela')
@@ -14,6 +15,8 @@ class Config(object):
 
 class TestingConfig(Config):
     """Configurations for Testing, with a separate test database."""
+
+    DATABASE = 'test_sendit'
     TESTING = True
     DEBUG = True
 
@@ -23,7 +26,9 @@ class DevelopmentConfig(Config):
     Development configurations
     """
 
+    DATABASE = 'sendit'
     DEBUG = True
+    TESTING = False
 
 
 class ProductionConfig(Config):
@@ -32,7 +37,7 @@ class ProductionConfig(Config):
     """
 
     DEBUG = False
-
+    TESTING = True
 
 app_config = {
     'development': DevelopmentConfig,
