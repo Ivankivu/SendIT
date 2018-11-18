@@ -8,9 +8,10 @@ from app.api.database.db_config import DBconnect
 from app.utils import Validator
 
 
-class User:
+class User(DBconnect):
     """ Creating User """
     def __init__(self, **kwargs):
+        DBconnect.__init__(self)
         self.user_id = kwargs.get("user_id")
         self.username = kwargs.get("username")
         self.email = kwargs.get("email")
@@ -25,6 +26,7 @@ class User:
         role = data.get("role")
 
         sql = '''INSERT INTO  users(username, email, password, role) VALUES(%s, %s, %s, %s)'''
+        query = '''CREATE TABLE IF NOT EXISTs users(user_id SERIAL PRIMARY KEY, username VARCHAR(100) NOT NULL, email VARCHAR(100) NOT NULL UNIQUE, password VARCHAR(12) NOT NULL, role VARCHAR(6) NOT NULL)'''
 
         try:
             with DBconnect() as cursor:
@@ -34,12 +36,12 @@ class User:
                     return jsonify({'msg': 'username below min 3 characters!!'})
                 if Validator.password(password):
                     return jsonify({'msg': 'Invalid entry. Please enter a valid username'})
-
                 cursor.execute("SELECT * FROM users WHERE username = '%s'" % username)
                 response = cursor.fetchone()
                 if response:
                     return jsonify("User already Exists. Please Choose another Username!!")
                 else:
+                    cursor.execute(query)
                     cursor.execute(sql, (username, email, password, role))
                     cursor.execute("SELECT * FROM users")
                     response = cursor.fetchall()

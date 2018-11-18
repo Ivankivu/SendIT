@@ -2,14 +2,22 @@ import datetime
 import logging
 import jwt
 from flask import Flask, jsonify, request, Response, json, make_response
-from app import app
+from app import app, app_config
 
 from app.api.models.users import User
+
 from app.api.database.db_config import DBconnect
 from app.utils import Validator
 
 
 class ViewUser:
+
+    def create_app(self):
+        """
+        Create an instance of the app with the development configuration
+        """
+        app.config.from_object(app_config["development"])
+        return app
 
     @app.route('/', methods=['GET'])
     def Home():
