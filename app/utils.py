@@ -12,11 +12,17 @@ class Validator:  # pragma: no cover
             return True
         return False
 
+    @staticmethod
+    def validate_name(name):
+        if name and len(name) < 3:
+            return True
+        return False
+
     def is_space(str):
         if len(str) == 0:
             return True
         return False
-
+    
     def is_email(item):
         if item != r'[\w\.-]+@[\w\.-]+':
             raise Exception("please enter a valid email!!")

@@ -1,6 +1,9 @@
-from flask import Flask, jsonify, request, Response, json, make_response
+import datetime
 import logging
+import jwt
+from flask import Flask, jsonify, request, Response, json, make_response
 from app import app
+
 from app.api.models.users import User
 from app.api.database.db_config import DBconnect
 from app.utils import Validator
@@ -25,8 +28,9 @@ class ViewUser:
             username = data['username']
             email = data['email']
             password = data['password']
+            role = data['role']
 
-            response = User.signup_user(username, email, password)
+            response = User.signup_user(username, email, password, role)
             return response
             try:
                 with DBconnect() as cursor:
@@ -54,21 +58,23 @@ class ViewUser:
             if Validator.password(password):
                 return jsonify({'msg': 'Invalid entry. Please enter a valid username'})
             with DBconnect() as cursor:
-
-                query = "SELECT * FROM users WHERE username = '%s' AND password = '%s'" % (username, password)
+                query = "SELECT user_id, username, password FROM users WHERE username = '%s' AND password = '%s'" % (username, password)
                 cursor.execute(query, (username, password))
                 response = cursor.fetchone()
                 if not response:
                     return jsonify({"error": "Invalid credentials"}), 400
+                if username:
+                    token = User.encode_auth_token(username)
+                if token:
+                    response = {
+                        'username': username,
+                        'message': 'You logged in successfully',
+                        'token': token
+                    }
+                    return make_response(jsonify(response))
+                else:
+                    return make_response(jsonify({"message": "wrong password or username credentials"}))
                 return jsonify({"Welcome": username}), 201
         except Exception as e:
             logging.error(e)
             return make_response(jsonify({'message': str(e)}), 500)
-
-        # access_token = create_access_token(identity=username)
-        # refresh_token = create_refresh_token(identity=username)
-
-        # response = jsonify({'login': True})
-        # set_access_cookies(response, access_token)
-        # set_refresh_cookies(response, refresh_token)
-        # return response, 200
