@@ -1,0 +1,2 @@
+
+command = '''CREATE TABLE IF NOT EXISTS users(user_id SERIAL PRIMARY KEY, username VARCHAR(35) NOT NULL UNIQUE, password VARCHAR(240) NOT NULL, role VARCHAR(23), registered_at TIMESTAMP DEFAULT NOW())'''
