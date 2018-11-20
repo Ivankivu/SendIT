@@ -26,8 +26,6 @@ class DBconnect:
                 #     self.conn = psycopg2.connect("dbname = 'sendit' user = 'postgres' host = 'localhost' password = 'postgres' port = '5432'")
                 #     self.cursor = self.conn.cursor()
                 #     return self.cursor
-                    # for command in commands:
-                    #     self.cursor.execute(command)
         except (Exception, psycopg2.DatabaseError) as error:
                 pprint(error)
 
