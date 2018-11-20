@@ -3,11 +3,17 @@ language: python
 python:
   - "3.6"
 
+services:
+- postgresql
+
 cache: pip
 install: 
   - pip install -r requirements.txt
   - pip install coveralls
   - pip install codecov
+
+before_script:
+  - psql -c 'create database travis_ci_test;' -U postgres
 
 script: 
   - pytest -v --cov app --cov-report term-missing

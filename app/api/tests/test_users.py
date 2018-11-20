@@ -14,6 +14,21 @@ class TestUser(BaseTestCase):
     # def test_user_exists(self):
     #     pass
 
+    def register_user2(self, **kwargs):
+        """
+        Method for adding  a parcel delivery
+        """
+        return self.client.post('api/v2/parcels', data=json.dumps(dict(
+                                parcel_name=parcel_name,
+                                username=username,
+                                weight=weight,
+                                category=category,
+                                carrier=carrier,
+                                source=source,
+                                destination=destination
+                                ))
+                                )
+
     def test_if_user_class_exists(self):
         user = User()
         self.assertTrue(user)

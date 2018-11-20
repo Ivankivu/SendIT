@@ -90,26 +90,18 @@ Tests can be run locally with the following commands:
 ### A example of tests
 
 ```python
-def test_parcel_exists(self):
-        parcel = parcel(1, "pen", 360, "Seeta", 23,
-                      "nice clear", "23mg", "kampala")
-        self.assertTrue(parcel)
+
 
 This test block above tests to check if this particular parcel does exist in the list
 ```
 
 # API routes and their actions
 
-| REQUEST | ROUTE | FUNCTIONALITY |
-| ------- | ----- | ------------- |
-| GET /parcels | [/api/v1/parcels](https://sendit-api-v1.herokuapp.com/api/v1/parcels) | Fetch all parcel delivery orders |
-|GET /parcel/<parcelId> | [/api/v1/parcels/<parcelId>](https://sendit-api-v1.herokuapp.com/api/v1/parcels/1) | Fetch a specific parcel delivery order |
-| PUT /parcels/<parcelId>/cancel | [/api/v1/parcels/<parcelId>](https://sendit-api-v1.herokuapp.com/api/v1/parcels/1/cancel) | Cancel the specific parcel delivery order|
-| POST /parcels | [/api/v1/parcels](https://sendit-api-v1.herokuapp.com/api/v1/parcels) | Create a parcel delivery order |
-| PUT /parcels/<parcelId>/cancel | [/api/v1/parcels/<parcelId>/cancel](https://sendit-api-v1.herokuapp.com/api/v1/parcels/1/cancel) | Cancel the specific parcel delivery order |
-| GET /parcels | [/api/v1/parcels](https://sendit-api-v1.herokuapp.com/api/v1/parcel) | Fetch all parcel delivery orders |
-| PUT /parcels/<parcelId>/cancel| [/api/v2/users/orders](https://sendit-api-v1.herokuapp.com/api/v1/parcels/1/cancel) | Cancel the specific parcel delivery order|
-| POST /parcels| [/api/v2/users/orders](https://sendit-api-v1.herokuapp.com/api/v1/parcels) | Create a parcel delivery order |
+| ENDPOINT | ROUTE | FUNCTIONALITY |NOTES]
+| ------- | ----- | ------------- |-------|
+| POST | [/api/v2/auth/signup](https://sendit-api-v2.herokuapp.com/api/v2/auth/signup) | | |
+| POST | [/api/v1/auth/login](https://sendit-api-v2.herokuapp.com/api/v2/auth/login) | | |
+| PUT | [/api/v2/parcels/<parcelId>/destination](https://sendit-api-v2.herokuapp.com/api/v2/parcels/1/destination) | Change the location of a specific parcel delivery order| Only the user who created the parcel delivery order should be able to change the destination of the parcel.|
 
 ## Authors
 
