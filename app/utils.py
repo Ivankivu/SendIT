@@ -8,21 +8,15 @@ from flask import Flask, jsonify  # pragma: no cover
 class Validator:  # pragma: no cover
 
     def is_empty(str):
-        if len(str) == 0:
+        if str == 0:
             return True
         return False
 
-    @staticmethod
     def validate_name(name):
         if name and len(name) < 3:
             return True
         return False
 
-    def is_space(str):
-        if len(str) == 0:
-            return True
-        return False
-    
     def is_email(item):
         if item != r'[\w\.-]+@[\w\.-]+':
             raise Exception("please enter a valid email!!")
@@ -38,6 +32,8 @@ class Validator:  # pragma: no cover
             return jsonify({
                 'message': 'Sorry item should be an integer'
             }), 400
+
+    
 
     def password(item):
         if not item:

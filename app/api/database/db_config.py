@@ -1,6 +1,7 @@
 import psycopg2
 import os
 from pprint import pprint
+from flask import Flask
 from app import app
 from app.config import app_config
 
@@ -12,10 +13,7 @@ class DBconnect:
         try:
                 # if app_config['testing']:
                 #     self.conn = psycopg2.connect("dbname = 'test_sendit' user ='postgres' host = 'localhost' password = 'postgres' port = '5432'")
-                #     self.cursor = self.conn.cursor()
-                #     return self.cursor
-                # if app_config['testing']:
-                #     self.conn = psycopg2.connect("dbname = 'd2n8htlj0r4mqh' user = 'nqmldnviazkcxq' host = 'ec2-54-83-8-246.compute-1.amazonaws.com' password = 'ea9c2af750bbf92b7f303605148117f4d722f51a1ff9eee048a173bfd0783ad8' port = '5432'")
+                #     # self.conn.autocommit = True
                 #     self.cursor = self.conn.cursor()
                 #     return self.cursor
                 if app_config['production']:
@@ -26,17 +24,12 @@ class DBconnect:
                 #     self.conn = psycopg2.connect("dbname = 'sendit' user = 'postgres' host = 'localhost' password = 'postgres' port = '5432'")
                 #     self.cursor = self.conn.cursor()
                 #     return self.cursor
-        except (Exception, psycopg2.DatabaseError) as error:
-                pprint(error)
 
-    def create_tables(self):
-            cursor.execute("CREATE TABLE IF NOT EXISTS users(user_id SERIAL PRIMARY KEY, username VARCHAR(35) NOT NULL UNIQUE, email VARCHAR(100) NOT NULL UNIQUE, password VARCHAR(240) NOT NULL, role VARCHAR(23) NOT NULL DEFAULT 'user', registered_at TIMESTAMP DEFAULT NOW())")
-            cursor.execute("CREATE TABLE IF NOT EXISTS carrier(carrier_id SERIAL PRIMARY KEY, carrier_type VARCHAR(50)  NOT NULL UNIQUE, mode VARCHAR(15) NOT NULL UNIQUE)")
-            cursor.execute("CREATE TABLE IF NOT EXISTS category(category_id SERIAL PRIMARY KEY, category_type VARCHAR(50) NOT NULL UNIQUE)")
-            cursor.execute("CREATE TABLE IF NOT EXISTS status(status_id SERIAL PRIMARY KEY, status_type VARCHAR(50) NOT NULL UNIQUE)")
-            cursor.execute("CREATE TABLE IF NOT EXISTS parcels(parcel_id SERIAL PRIMARY KEY, parcel_name VARCHAR(100) UNIQUE, username VARCHAR(35), weight INTEGER, orderDate date, category VARCHAR, carrier VARCHAR, source VARCHAR(50) NOT NULL, destination VARCHAR(50) NOT NULL, location VARCHAR(50), status VARCHAR, FOREIGN KEY(status) REFERENCES status(status_type), FOREIGN KEY(username) REFERENCES users(username), FOREIGN KEY(category) REFERENCES category(category_type), FOREIGN KEY(carrier) REFERENCES carrier(carrier_type))")
+        except:
+            pprint("Cannot connect to the Database!")
 
     def __exit__(self, exception_type, exception_val, exception_traceback):
-        self.conn.commit()
-        self.cursor.close()
-        self.conn.close()
+            self.conn.commit()
+            self.cursor.close()
+            self.conn.close()
+

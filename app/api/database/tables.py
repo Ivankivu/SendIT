@@ -2,12 +2,11 @@ command = (
                     """
                     CREATE TABLE IF NOT EXISTS users(
                         user_id SERIAL PRIMARY KEY,
-                        username VARCHAR(35) NOT NULL UNIQUE,
+                        username VARCHAR(35) UNIQUE,
                         email VARCHAR(100) NOT NULL UNIQUE,
                         password VARCHAR(240) NOT NULL,
-                        role VARCHAR(23),
-                        registered_at TIMESTAMP DEFAULT NOW()
-                        )
+                        role VARCHAR(23) NOT NULL DEFAULT 'user',
+                        registered_at TIMESTAMP DEFAULT NOW())
                     """,
                     """
                     CREATE TABLE IF NOT EXISTS carrier(
@@ -32,15 +31,13 @@ command = (
                     CREATE TABLE IF NOT EXISTS parcels(
                         parcel_id SERIAL PRIMARY KEY,
                         parcel_name VARCHAR(100) UNIQUE,
-                        username VARCHAR, weight INTEGER,
-                        orderDate date, category VARCHAR,
-                        carrier VARCHAR, source VARCHAR(50) NOT NULL,
+                        weight INTEGER, orderDate date,
+                        category VARCHAR, carrier VARCHAR,
+                        source VARCHAR(50) NOT NULL,
                         destination VARCHAR(50) NOT NULL,
-                        location VARCHAR(50),
-                        status VARCHAR,
+                        location VARCHAR(50), status VARCHAR,
                         FOREIGN KEY(status) REFERENCES status(status_type),
-                        FOREIGN KEY(username) REFERENCES users(username),
+                        username VARCHAR(35) REFERENCES users(username),
                         FOREIGN KEY(category) REFERENCES category(category_type),
-                        FOREIGN KEY(carrier) REFERENCES carrier(carrier_type)
-                        )
+                        FOREIGN KEY(carrier) REFERENCES carrier(carrier_type))
                     """,)
