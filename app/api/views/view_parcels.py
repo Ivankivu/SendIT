@@ -46,28 +46,26 @@ class Viewparcels:
             logging.error(e)
             return jsonify({'message': str(e)}), 500
 
-    @app.route('/api/v2/parcels/<int:parcel_id>/destination', methods=['GET', 'PUT'])
+    @app.route('/api/v2/admin/parcels', methods=['GET'])
     @jwt_required
-    def change_destination(parcel_id):
-
+    def admin_get_all_parcels():
         """
-        this method handels how user changes destination of the parcel
+        Only Admin can get all users parcels
         """
-
         current_user = get_jwt_identity()
 
-        info = request.get_json()
-        parcel_name = info["parcel_name"]
-        destination = info['destination']
+        query = "select * from users where role= 'admin' and username= '{}'".format(current_user)
 
-        sql = "UPDATE parcels SET destination='{}' WHERE parcel_name='{}' and username='{}'".format(destination, parcel_name, current_user)
-
+        sql = "SELECT * FROM parcels"
         try:
             with DBconnect() as cursor:
-
-                cursor.execute(sql,(destination,))
-                cursor.execute("select * from parcels")
-                return jsonify({"message": cursor.fetchall()}), 201
+                cursor.execute(query)
+                res = cursor.fetchone()
+                if res:
+                    cursor.execute(sql)
+                    return jsonify({"message": cursor.fetchall()}), 201
+                return jsonify({'Alert!': 'Authorized Access Only.'})
+                
         except Exception as e:
             logging.error(e)
             return jsonify({'message': str(e)}), 500
