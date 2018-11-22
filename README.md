@@ -1,5 +1,5 @@
-
-# SendIT
+[![Build Status](https://travis-ci.org/Ivankivu/SendIT.svg?branch=e4147014-sendit-api-v2)](https://travis-ci.org/Ivankivu/SendIT) [![Maintainability](https://api.codeclimate.com/v1/badges/e98ad700ef47397de5a0/maintainability)](https://codeclimate.com/github/Ivankivu/SendIT/maintainability) [![Coverage Status](https://coveralls.io/repos/github/Ivankivu/SendIT/badge.svg?branch=e4147014-sendit-api-v2)](https://coveralls.io/github/Ivankivu/SendIT?branch=e4147014-sendit-api-v2)
+# SendIT 
 
 SendIT is a courier service that helps users deliver parcels to different destinations. SendIT provides courier quotes based on weight categories.
 
