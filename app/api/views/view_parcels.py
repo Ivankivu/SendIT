@@ -18,8 +18,16 @@ class Viewparcels:
     @jwt_required
     def get_all_parcels():
         current_user = get_jwt_identity()
+        if not current_user:
+            return jsonify({"Message": "Signup for an account!!"})
         return jsonify(logged_in_as=current_user), 200
-        return jsonify({"Message": "No Parcels found!!"})
+
+        with DBconnect() as cursor:
+            sql = "select * from parcels where username='{}'".format(current_user)
+            response = cursor.execute(sql)
+            if not response:
+                return jsonify({"Message": "No Parcels found!!"})
+            return jsonify({"Parcels": response})
 
     @app.route('/api/v2/user/parcels', methods=["GET"])
     @jwt_required
@@ -39,25 +47,25 @@ class Viewparcels:
             return jsonify({'message': str(e)}), 500
 
     @app.route('/api/v2/admin/parcels', methods=['GET'])
+    @jwt_required
     def admin_get_all_parcels():
         """
         Only Admin can get all users parcels
         """
-        data = request.get_json()
-        username = data['username']
         current_user = get_jwt_identity()
 
         query = "select * from users where role= 'admin' and username= '{}'".format(current_user)
 
-        sql = "SELECT * FROM parcels WHERE username = '%s'" % username
+        sql = "SELECT * FROM parcels"
         try:
             with DBconnect() as cursor:
                 cursor.execute(query)
-                cursor.fetchone()
-                if not cursor.fetchone():
-                    return jsonify({'Alert!': 'Authorized Access Only.'})
-                cursor.execute(sql)
-                return jsonify({"message": cursor.fetchall()}), 201
+                res = cursor.fetchone()
+                if res:
+                    cursor.execute(sql)
+                    return jsonify({"message": cursor.fetchall()}), 201
+                return jsonify({'Alert!': 'Authorized Access Only.'})
+                
         except Exception as e:
             logging.error(e)
             return jsonify({'message': str(e)}), 500
@@ -72,141 +80,69 @@ class Viewparcels:
         parcel_name = data["parcel_name"]
         username = data["username"]
         weight = data['weight']
-        category = data['category']
-        carrier = data['carrier']
+        present_location = "pending"
         source = data['source']
         destination = data['destination']
 
+        new_parcel = parcel_name
+
         sql = """
-           INSERT INTO parcels(parcel_name, username, weight, category, carrier, source, destination)
-           VALUES(%s, %s, %s, %s, %s, %s, %s) """
+           INSERT INTO parcels(parcel_name, username, weight, source, present_location, pickup_location, destination, status)
+           VALUES(%s, %s, %s, %s, %s, %s, %s, %s) """
 
         try:
             with DBconnect() as cursor:
-                    cursor.execute(sql, (parcel_name, username, weight, category, carrier, source, destination))
-                    cursor.execute("SELECT * FROM parcels")
-                    response = cursor.fetchall()
-                    return jsonify({"message": "Successfully registered",
-                                    "users": response}), 201
+                    response = cursor.execute(sql, (parcel_name, username, weight, source, "pending", "pending", destination, "pending",))
+                    result = "SELECT * FROM parcels where parcel_name='{}'".format(new_parcel)
+                    cursor.execute(result)
+                    cursor.fetchone()
+                    return jsonify({"message": "Parcel Added!",
+                                    "Parcel": cursor.fetchone()}), 201
         except Exception as e:
             logging.error(e)
             return make_response(jsonify({'message': str(e)}), 500)
 
-    @app.route('/api/v2/admin/carrier', methods=['POST'])
-    @jwt_required
-    def carrier():
-        """
-        Only Admin can add a new parcel carrier
-        """
-        data = request.get_json()
-        carrier_type = data['carrier_type']
-        mode = data['mode']
+    # @app.route('/api/v2/admin/parcels', methods=['GET'])
+    # @jwt_required
+    # def admin_get_all_parcels():
+    #     """
+    #     Only Admin can get all users parcels
+    #     """
+    #     data = request.get_json()
+    #     username = data['username']
+    #     # current_user = get_jwt_identity()
 
-        if carrier_type == '':
-            return jsonify({"message": "Invalid input!!"})
+    #     # query = "select * from users where role= 'admin' and username= '{}'".format(current_user)
 
-        sql = '''INSERT INTO carrier(carrier_type, mode) VALUES(%s, %s)'''
-
-        try:
-            with DBconnect() as cursor:
-                cursor.execute("SELECT * FROM carrier WHERE carrier_type = '%s'" % carrier_type)
-                response = cursor.fetchone()
-                if response:
-                    return jsonify({"message": "carrier already Exists!!"})
-                cursor.execute(sql, (carrier_type, mode))
-                return make_response(jsonify({"message": "New carrier added!"}), 201)
-        except Exception as e:
-                logging.error(e)
-                return jsonify({'message': str(e)}), 500
-
-    @app.route('/api/v2/admin/category', methods=['POST'])
-    def category():
-        """
-        Only Admin can add a new parcel category
-        """
-        data = request.get_json()
-        category_type = data['category_type']
-
-        if category_type == '': 
-            return jsonify({"message": "Invalid input!!"})
-        if category_type == int:
-            return jsonify({"message": "Invalid input!!"})
-
-        query = '''INSERT INTO category(category_type) VALUES(%s)'''
-
-        try:
-            with DBconnect() as cursor:
-                cursor.execute("SELECT * FROM category WHERE category_type = '%s'" % category_type)
-                response = cursor.fetchone()
-                if response:
-                    return jsonify({"message": "category already Exists!!"})
-                cursor.execute(query, (category_type,))
-                cursor.execute("SELECT * FROM category")
-                response = cursor.fetchall()
-                return jsonify({"message": "New category added!"}), 201
-        except Exception as e:
-            logging.error(e)
-            return jsonify({'message': str(e)}), 500
-
-    @app.route('/api/v2/admin/status', methods=['GET', 'POST'])
-    def status():
-
-        '''
-        Only Admin can add a new parcel delivery status
-        '''
-        data = request.get_json()
-        status_type = data['status_type']
-
-        query = '''INSERT INTO status(status_type) VALUES(%s)'''
-
-        try:
-            with DBconnect() as cursor:
-                cursor.execute("SELECT * FROM status WHERE status_type = '{}'".format(status_type))
-                cursor.fetchone()
-                if cursor.fetchone():
-                    return jsonify({"message": "status already Exists!!"})
-                cursor.execute(query, (status_type,))
-                if not cursor.execute(query, (status_type,)):
-                    return jsonify({"message": "Failed to add new status!"}), 400
-                return jsonify({"message": "New status added!"}), 201
-        except Exception as e:
-            logging.error(e)
-            return jsonify({'message': str(e)}), 500
-
-    @app.route('/api/v2/parcels/<int:parcel_id>/destination', methods=['GET', 'PUT'])
-    def change_destination(parcel_id):
-
-        """
-        this method handels how user changes destination of the parcel
-        """
-
-        parcel_name = data["parcel_name"]
-        username = data["username"]
-        destination = data['destination']
-
-        sql = """ UPDATE parcels SET destination='%s' WHERE parcel_name = '%s' """ % (destination, parcel_name)
-        try:
-            with DBconnect() as cursor:
-                cursor.execute(sql)
-                cursor.execute("select * from parcels")
-                return jsonify({"message": cursor.fetchall()}), 201
-        except Exception as e:
-            logging.error(e)
-            return jsonify({'message': str(e)}), 500
+    #     sql = "SELECT * FROM parcels WHERE username = '%s'" % username
+    #     try:
+    #         with DBconnect() as cursor:
+    #             cursor.execute(query)
+    #             res = cursor.fetchone()
+    #             if not res:
+    #                 return jsonify({'Alert!': 'Authorized Access Only.'})
+    #             cursor.execute(sql)
+    #             return jsonify({"message": cursor.fetchall()}), 201
+    #     except Exception as e:
+    #         logging.error(e)
+    #         return jsonify({'message': str(e)}), 500
 
     @app.route('/api/v2/parcels/<int:parcel_id>/status', methods=['GET', 'PUT'])
-    def admin_change_parcel_status(parcel_id):
+    @jwt_required
+    def admin_change_parcel_status():
         """
         this method handels how an admin changes status of the parcel delivery
         """
         data = request.get_json()
-        parcel_id = data["parcel_id"]
         status_type = data['status_type']
 
-        sql = "UPDATE parcels SET status_type='%s' WHERE parcel_id = '%s'" % (status_type, parcel_id)
+        # response = Validator.validate(status_type)
+        # return response
+
+        sql = "UPDATE parcels SET status_type='%s' WHERE parcel_id = '%s'" % (status_type)
         try:
             with DBconnect() as cursor:
-                cursor.execute(sql)
+                cursor.execute(sql, (status_type,))
                 cursor.execute("select * from parcels")
                 return jsonify({"message": cursor.fetchall()}), 201
         except Exception as e:
