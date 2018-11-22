@@ -13,6 +13,7 @@ ignore_errors = True
 omit =
     */home/travis/virtualenv/python3.6.3/lib/python3.6/site-packages/*
     venv/*
-    tests/*
+    app/api/database/tables.py*
+    app/api/database/db_config.py*
     setup.py
        

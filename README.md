@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/Ivankivu/SendIT.svg?branch=e4147014-sendit-api-v2)](https://travis-ci.org/Ivankivu/SendIT) [![Maintainability](https://api.codeclimate.com/v1/badges/e98ad700ef47397de5a0/maintainability)](https://codeclimate.com/github/Ivankivu/SendIT/maintainability) [![Coverage Status](https://coveralls.io/repos/github/Ivankivu/SendIT/badge.svg?branch=e4147014-sendit-api-v2)](https://coveralls.io/github/Ivankivu/SendIT?branch=e4147014-sendit-api-v2)
 
 # SendIT
 
@@ -30,16 +31,14 @@ SendIT is a courier service that helps users deliver parcels to different destin
 
 ```python
 {
-        "category": "food",
-        "cost": 360,
-        "destination": "Seeta",
-        "distance": 23,
-        "parcel_name": "fish",
-        "parcel_weight": 23,
-        "source": "kampala",
-        "status": "in-transist",
-        "tracking_number": 234087
-    }
+ "parcel_name": "car",
+ "username": "tom",
+ "weight": 2.6,
+ "category": "Vehicles",
+ "carrier": "Aeroplane",
+ "source": "mengo",
+ "destination": "Gayaza" 
+}
 ```
 
 ### Prerequisites
@@ -90,26 +89,25 @@ Tests can be run locally with the following commands:
 ### A example of tests
 
 ```python
-def test_parcel_exists(self):
-        parcel = parcel(1, "pen", 360, "Seeta", 23,
-                      "nice clear", "23mg", "kampala")
-        self.assertTrue(parcel)
+
 
 This test block above tests to check if this particular parcel does exist in the list
 ```
 
 # API routes and their actions
 
-| REQUEST | ROUTE | FUNCTIONALITY |
-| ------- | ----- | ------------- |
-| GET /parcels | [/api/v1/parcels](https://sendit-api-v1.herokuapp.com/api/v1/parcels) | Fetch all parcel delivery orders |
-|GET /parcel/<parcelId> | [/api/v1/parcels/<parcelId>](https://sendit-api-v1.herokuapp.com/api/v1/parcels/1) | Fetch a specific parcel delivery order |
-| PUT /parcels/<parcelId>/cancel | [/api/v1/parcels/<parcelId>](https://sendit-api-v1.herokuapp.com/api/v1/parcels/1/cancel) | Cancel the specific parcel delivery order|
-| POST /parcels | [/api/v1/parcels](https://sendit-api-v1.herokuapp.com/api/v1/parcels) | Create a parcel delivery order |
-| PUT /parcels/<parcelId>/cancel | [/api/v1/parcels/<parcelId>/cancel](https://sendit-api-v1.herokuapp.com/api/v1/parcels/1/cancel) | Cancel the specific parcel delivery order |
-| GET /parcels | [/api/v1/parcels](https://sendit-api-v1.herokuapp.com/api/v1/parcel) | Fetch all parcel delivery orders |
-| PUT /parcels/<parcelId>/cancel| [/api/v2/users/orders](https://sendit-api-v1.herokuapp.com/api/v1/parcels/1/cancel) | Cancel the specific parcel delivery order|
-| POST /parcels| [/api/v2/users/orders](https://sendit-api-v1.herokuapp.com/api/v1/parcels) | Create a parcel delivery order |
+| ENDPOINT | ROUTE | FUNCTIONALITY |NOTES]
+| ------- | ----- | ------------- |-------|
+| POST | [/api/v2/auth/signup](https://sendit-api-v2.herokuapp.com/api/v2/auth/signup) | The user can signup a new account| |
+| POST | [/api/v2/auth/login](https://sendit-api-v2.herokuapp.com/api/v2/auth/login) | The user can login with valid credentials| |
+|POST| [/api/v2/parcels](https://sendit-api-v2.herokuapp.com/api/v2/auth/login) |The User can add a parcel| |
+| PUT | [/api/v2/parcels/<int:parcel_id/destination](https://sendit-api-v2.herokuapp.com/api/v2/parcels/1/destination) | Only the user who created the parcel delivery order should be able to change the destination of the parcel.| |
+|GET|[/api/v2/admin/parcels](https://sendit-api-v2.herokuapp.com/api/v2/admin/parcels)| Only theadmin can get all users' parcel||
+|PUT|[/api/v2/parcels/1/status](https://sendit-api-v2.herokuapp.com/api/v2/parcels/1/status)| Only the admin can change a parcel status||
+|POST|[/api/v2/admin/category](https://sendit-api-v2.herokuapp.com/api/v2/admin/category)| Only the admin can change a parcel category||
+|POST|[/api/v2/admin/status](https://sendit-api-v2.herokuapp.com/api/v2/admin/status)| Only the admin can add a parcel status||
+|POST|[/api/v2/admin/carrier](https://sendit-api-v2.herokuapp.com/api/v2/admin/carrier)| Only the admin can a parcel carrier||
+|PUT|[/parcels/parcelId/presentLocation](https://sendit-api-v2.herokuapp.com/parcels/parcelId/presentLocation)| Only the admin can change parcel's present location||
 
 ## Authors
 
