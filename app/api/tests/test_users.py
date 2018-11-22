@@ -64,12 +64,11 @@ class TestUser(BaseTestCase):
         """
             Tests if User is signing with used email
         """
-        with self.client:
-            self.signup_user("ivan", "ivan@yahoo.com", "andela1202", "user")
-            response = self.signup_user("ivan", "ivan@yahoo.com", "andela1202", "user")
-            data = json.loads(response.data.decode())
-            self.assertEqual(response.status_code, 200)
-            self.assertTrue('message', "User already Exists")
+        self.signup_user("ivan", "ivan@yahoo.com", "andela1202", "user")
+        response = self.signup_user("ivan", "ivan@yahoo.com", "andela1202", "user")
+        data = json.loads(response.data.decode())
+        self.assertEqual(response.status_code, 200)
+        self.assertTrue('message', "User already Exists")
 
     def test_existing_user(self):
         """

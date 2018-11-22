@@ -1,5 +1,7 @@
 import psycopg2
+
 import os
+from psycopg2 import extras as IK
 from pprint import pprint
 from flask import Flask
 from app import app
@@ -11,23 +13,23 @@ class DBconnect:
     def __enter__(self):
 
         try:
-            if app_config['testing']:
-                self.conn = psycopg2.connect("dbname = 'travis_ci_test' user ='postgres' host = 'localhost' password = 'postgres' port = '5432'")
-                self.cursor = self.conn.cursor()
-                return self.cursor
             # if app_config['testing']:
-            #     self.conn = psycopg2.connect("dbname = 'd2n8htlj0r4mqh' user = 'nqmldnviazkcxq' host = 'ec2-54-83-8-246.compute-1.amazonaws.com' password = 'ea9c2af750bbf92b7f303605148117f4d722f51a1ff9eee048a173bfd0783ad8' port = '5432'")
-            #     self.cursor = self.conn.cursor()
+            #     self.conn = psycopg2.connect("dbname = 'test_sendit' user ='postgres' host = 'localhost' password = 'postgres' port = '5432'")
+            #     self.cursor = self.conn.cursor(cursor_factory=IK.RealDictCursor)
+            #     return self.cursor
+            # if app_config['testing']:
+            #     self.conn = psycopg2.connect("dbname = 'travis_ci_test' user ='postgres' host = 'localhost' password = 'postgres' port = '5432'")
+            #     self.cursor = self.conn.cursor(cursor_factory=IK.RealDictCursor)
             #     return self.cursor
       
-            elif app_config['production']:
-                self.conn = psycopg2.connect("dbname = 'd6g1ajbujg1285', user = 'lczfiodmgblubu' host = 'ec2-54-235-193-0.compute-1.amazonaws.com' password = '76487fa95068a43af7da7deab9bd4783e1bc97659503032e4b37a6ee5199769c' port = '5432'")
-                self.cursor = self.conn.cursor()
-                return self.cursor
-            # if app_config['development']:
-            #     self.conn = psycopg2.connect("dbname = 'sendit' user = 'postgres' host = 'localhost' password = 'postgres' port = '5432'")
-            #     self.cursor = self.conn.cursor()
+            # elif app_config['production']:
+            #     self.conn = psycopg2.connect("dbname = 'd6g1ajbujg1285', user = 'lczfiodmgblubu' host = 'ec2-54-235-193-0.compute-1.amazonaws.com' password = '76487fa95068a43af7da7deab9bd4783e1bc97659503032e4b37a6ee5199769c' port = '5432'")
+            # self.cursor = self.conn.cursor(cursor_factory=IK.RealDictCursor)
             #     return self.cursor
+            if app_config['development']:
+                self.conn = psycopg2.connect("dbname = 'sendit' user = 'postgres' host = 'localhost' password = 'postgres' port = '5432'")
+                self.cursor = self.conn.cursor(cursor_factory=IK.RealDictCursor)
+                return self.cursor
 
         except:
             pprint("Cannot connect to the Database!")
