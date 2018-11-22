@@ -203,7 +203,7 @@ class Viewparcels:
         parcel_id = data["parcel_id"]
         status_type = data['status_type']
 
-        sql = """ UPDATE parcels SET status_type='%s' WHERE parcel_id = '%s'""" % (status_type, parcel_id)
+        sql = "UPDATE parcels SET status_type='%s' WHERE parcel_id = '%s'" % (status_type, parcel_id)
         try:
             with DBconnect() as cursor:
                 cursor.execute(sql)
