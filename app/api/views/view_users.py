@@ -6,12 +6,14 @@ from flask_jwt_extended import (
     JWTManager, jwt_required, create_access_token,
     get_jwt_identity
 )
+from flasgger import Swagger, swag_from
 from app.api.models.users import User
 from app.api.database.db_config import DBconnect
 from app.utils import Validator
 
 app.config['JWT_SECRET_KEY'] = 'andela'
 jwt = JWTManager(app)
+Swagger(app)
 
 
 class ViewUser:
@@ -21,10 +23,11 @@ class ViewUser:
         return jsonify({"message": "Welcome to SendIT API v2. Please [Signup] for an account , or [Login]"})
 
     @app.route('/api/v2/auth/signup', methods=['GET', 'POST'])
+    @swag_from('../docs/signup.yml')
     def signup():
 
         """
-        Add an user to the database through the Signup
+        Add a user to the app through the Signup
         """
         # DBconnect.
         if request.method == 'POST':
@@ -62,6 +65,7 @@ class ViewUser:
             return jsonify({'message': 'Please copy this sites url to your postman and test'}),200  # pragma: no cover
 
     @app.route('/api/v2/auth/login', methods=['GET', 'POST'])
+    @swag_from('../docs/login.yml')
     def user_login():
         """
         user login with valid credentials after Signup

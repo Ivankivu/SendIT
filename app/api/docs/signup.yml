@@ -1,0 +1,29 @@
+User Signup.
+---
+tags:
+  - User 
+  - Signup
+  
+parameters:
+  - in: body
+    name: body
+    required: true
+    type: string
+    description: Add a user to the app through the Signup. 
+responses:
+  201:
+    description: Successfully registered
+    schema:
+      id: register
+      properties:
+        username:
+          type: string
+          default: ivan
+        email:
+          type: string
+          default: ivan@yahoo.com
+        password:
+          type: string
+          default: andela1202
+  400:
+    description: Validation error

@@ -32,38 +32,28 @@ class TestParcel(BaseTestCase):
             password='andela1202'
         )
 
-    def test_category_name_must_be_a_string(self):
-
-            res = self.client.post(
-                '/api/v2/auth/login',
-                data=json.dumps(self.user),
-                content_type='application/json'
-            )
-
-            data = json.loads(res.data)
-            token = data.get('token')
-            headers = {'Authorization': f'Bearer {token}'}
-            self.category['category_type'] = "Perishables"
-            # self.assertIn(b'Invalid input!!', res.data)
-
-    def test_only_admin_can_add_category(self):
+    def test_user_can_add_parcel(self):
             
             res = self.client.post(
                 '/api/v2/auth/login',
                 data=json.dumps(self.user),
                 content_type='application/json'
             )
-            new_category = dict(
-                category_type='Perishables'
-            )
+            new_parcel = dict(
+                parcel_name='iphone',
+                username='ivan',
+                weight=0.7,
+                source='sweden',
+                destination='Uganda'
+                            )
 
             data = json.loads(res.data)
             token = data.get('token')
             headers = {'Authorization': f'Bearer {token}'}
 
             res2 = self.client.put(
-                '/api/v2/admin/category',
-                data=json.dumps(new_category),
+                '/api/v2/parcels',
+                data=json.dumps(new_parcel),
                 content_type='application/json',
                 headers=headers
             )
