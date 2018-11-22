@@ -68,7 +68,7 @@ class TestUser(BaseTestCase):
             self.signup_user("ivan", "ivan@yahoo.com", "andela1202", "user")
             response = self.signup_user("ivan", "ivan@yahoo.com", "andela1202", "user")
             data = json.loads(response.data.decode())
-            self.assertEqual(response.status_code, 200)
+            self.assertEqual(response.status_code, 500)
             self.assertTrue('message', "User already Exists")
 
     def test_existing_user(self):

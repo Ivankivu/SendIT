@@ -39,7 +39,7 @@ class ProductionConfig(Config):
     """
     DATABASE = 'd6g1ajbujg1285'
     DEBUG = False
-    TESTING = True
+    TESTING = False
 
 app_config = {
     'development': DevelopmentConfig,
