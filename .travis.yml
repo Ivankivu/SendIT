@@ -12,8 +12,8 @@ install:
   - pip install coveralls
   - pip install codecov
 
-# before_script:
-#   - psql -c 'create database travis_ci_test;' -U postgres
+before_script:
+  - psql -c 'create database travis_ci_test;' -U postgres
 
 script: 
   - pytest -v --cov app --cov-report term-missing
