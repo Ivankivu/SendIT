@@ -88,4 +88,3 @@ class TestUser(BaseTestCase):
                     content_type='application/json'
                 )
             self.assertTrue(b'Invalid credentials', res.data)
-            self.assertIn(b'\n  "message": "relation \\"users\\" does not exist\\nLINE 1: SELECT user_id, username, password FROM users WHERE username...\\n', res.data)
