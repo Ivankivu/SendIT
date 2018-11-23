@@ -25,11 +25,7 @@ class ViewUser:
     @app.route('/api/v2/auth/signup', methods=['GET', 'POST'])
     @swag_from('../docs/signup.yml')
     def signup():
-
-        """
-        user to the app through the Signup
-        """
-        # DBconnect.
+        
         if request.method == 'POST':
             data = request.get_json()
             username = data["username"]
@@ -60,9 +56,7 @@ class ViewUser:
     @app.route('/api/v2/auth/login', methods=['GET', 'POST'])
     @swag_from('../docs/login.yml')
     def user_login():
-        """
-        user login with valid credentials after Signup
-        """
+        
         data = request.get_json()
 
         username = data['username']

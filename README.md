@@ -24,20 +24,18 @@ SendIT is a courier service that helps users deliver parcels to different destin
 
 ## User Interface [Demo here](https://ivankivu.github.io/SendIT/UI/)
 
-## Heroku [Demo](https://sendit-api-v1.herokuapp.com/)
+## Heroku [Demo](https://sendit-api-v2.herokuapp.com/)
 
 * copy the above url to any tool of your choice for like [Postman](https://www.getpostman.com/)
 * use the sample json data to get started
 
 ```python
 {
- "parcel_name": "car",
- "username": "tom",
- "weight": 2.6,
- "category": "Vehicles",
- "carrier": "Aeroplane",
- "source": "mengo",
- "destination": "Gayaza" 
+ "parcel_name": "fish",
+ "username": "ivan",
+ "weight": 0.7,
+ "source": "sweden",
+ "destination": "Uganda"
 }
 ```
 
@@ -100,13 +98,12 @@ This test block above tests to check if this particular parcel does exist in the
 | ------- | ----- | ------------- |-------|
 | POST | [/api/v2/auth/signup](https://sendit-api-v2.herokuapp.com/api/v2/auth/signup) | The user can signup a new account| |
 | POST | [/api/v2/auth/login](https://sendit-api-v2.herokuapp.com/api/v2/auth/login) | The user can login with valid credentials| |
-|POST| [/api/v2/parcels](https://sendit-api-v2.herokuapp.com/api/v2/auth/login) |The User can add a parcel| |
+|POST| [/api/v2/parcels](https://sendit-api-v2.herokuapp.com/api/v2/parcels) |The User can add a parcel| |
+|GET| [/api/v2/parcels](https://sendit-api-v2.herokuapp.com/api/v2/parcels) |The User can view all their parcels| |
 | PUT | [/api/v2/parcels/<int:parcel_id/destination](https://sendit-api-v2.herokuapp.com/api/v2/parcels/1/destination) | Only the user who created the parcel delivery order should be able to change the destination of the parcel.| |
-|GET|[/api/v2/admin/parcels](https://sendit-api-v2.herokuapp.com/api/v2/admin/parcels)| Only theadmin can get all users' parcel||
+|PUT|[/api/v2/parcels/1/cancel](https://sendit-api-v2.herokuapp.com/api/v2/parcels/1/cancel)| User can cancel parcel delivery||
+|GET|[/api/v2/admin/parcels](https://sendit-api-v2.herokuapp.com/api/v2/admin/parcels)| Only the admin can get all users' parcel||
 |PUT|[/api/v2/parcels/1/status](https://sendit-api-v2.herokuapp.com/api/v2/parcels/1/status)| Only the admin can change a parcel status||
-|POST|[/api/v2/admin/category](https://sendit-api-v2.herokuapp.com/api/v2/admin/category)| Only the admin can change a parcel category||
-|POST|[/api/v2/admin/status](https://sendit-api-v2.herokuapp.com/api/v2/admin/status)| Only the admin can add a parcel status||
-|POST|[/api/v2/admin/carrier](https://sendit-api-v2.herokuapp.com/api/v2/admin/carrier)| Only the admin can a parcel carrier||
 |PUT|[/parcels/parcelId/presentLocation](https://sendit-api-v2.herokuapp.com/parcels/parcelId/presentLocation)| Only the admin can change parcel's present location||
 
 ## Authors
