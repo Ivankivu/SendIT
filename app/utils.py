@@ -7,59 +7,12 @@ from flask import Flask, jsonify  # pragma: no cover
 
 class Validator:  # pragma: no cover
 
-    def validate(item):
-        if item == '':
-            return jsonify({"message": "Invalid input!!"})
-        if item == 0:
-            return jsonify({'message': 'Invalid input'})
-        if isinstance(item, int):
-            return jsonify({'message': 'Invalid Input'})
-        if not item and not item.isspace():
-            return jsonify({'message': 'Empty values are invalid'})
-
-    def validate2(item, item2):
-        if item == '':
-            return jsonify({"message": "Invalid input!!"})
-        if item == 0:
-            return jsonify({'message': 'Invalid input'})
-        if isinstance(item, int):
-            return jsonify({'message': 'Invalid Input'})
-        if not item and not item.isspace():
-            return jsonify({'message': 'Empty values are invalid'})
-        if item2 == '':
-            return jsonify({"message": "Invalid input!!"})
-        if item2 == 0:
-            return jsonify({'message': 'Invalid input'})
-        if isinstance(item2, int):
-            return jsonify({'message': 'Invalid Input'})
-        if not item2 and not item2.isspace():
-            return jsonify({'message': 'Empty values are invalid'})
-
     def validate3(item, item2, item3):
-        if item == '':
-            return jsonify({"message": "Invalid input!!"})
-        if item == 0:
-            return jsonify({'message': 'Invalid input'})
-        if isinstance(item, int):
+
+        if isinstance(item, int) or isinstance(item2, int) or isinstance(item3, int):
             return jsonify({'message': 'Invalid Input'})
-        if not item and not item.isspace():
-            return jsonify({'message': 'Empty values are invalid'})
-        if item2 == '':
+        if not str.isalpha(item) or not str.isalpha(item2) or not not str.isalpha(item3):
             return jsonify({"message": "Invalid input!!"})
-        if item2 == 0:
-            return jsonify({'message': 'Invalid input'})
-        if isinstance(item2, int):
-            return jsonify({'message': 'Invalid Input'})
-        if not item2 and not item2.isspace():
-            return jsonify({'message': 'Empty values are invalid'})
-        if item3 == '':
-            return jsonify({"message": "Invalid input!!"})
-        if item3 == 0:
-            return jsonify({'message': 'Invalid input'})
-        if isinstance(item3, int):
-            return jsonify({'message': 'Invalid Input'})
-        if not item3 and not item3.isspace():
-            return jsonify({'message': 'Empty values are invalid'})
 
     def is_empty(str):
         if str == 0:
@@ -72,7 +25,7 @@ class Validator:  # pragma: no cover
         return False
 
     def is_email(item):
-        if item != r'[\w\.-]+@[\w\.-]+':
+        if not r'[\w\.-]+@[\w\.-]+':
             raise Exception("please enter a valid email!!")
 
     def is_not_integer(int):
