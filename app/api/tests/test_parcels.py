@@ -1,6 +1,7 @@
 import os
 import json
-from flask import Response, json, request
+import logging
+from flask import Response, json, request, jsonify
 from app import app
 from app.api import create_app
 from app.api.models.users import User
@@ -32,47 +33,31 @@ class TestParcel(BaseTestCase):
             password='andela1202'
         )
 
-    def test_category_name_must_be_a_string(self):
-
-            res = self.client.post(
-                '/api/v2/auth/login',
-                data=json.dumps(self.user),
-                content_type='application/json'
-            )
-
-            data = json.loads(res.data)
-            token = data.get('token')
-            headers = {'Authorization': f'Bearer {token}'}
-            self.category['category_type'] = "Perishables"
-            # self.assertIn(b'Invalid input!!', res.data)
-
-    def test_only_admin_can_add_category(self):
+    def test_user_can_add_parcel(self):
             
             res = self.client.post(
                 '/api/v2/auth/login',
                 data=json.dumps(self.user),
                 content_type='application/json'
             )
-            new_category = dict(
-                category_type='Perishables'
-            )
+            new_parcel = dict(
+                parcel_name='iphone',
+                username='ivan',
+                weight=0.7,
+                source='sweden',
+                destination='Uganda'
+                            )
 
             data = json.loads(res.data)
             token = data.get('token')
             headers = {'Authorization': f'Bearer {token}'}
 
             res2 = self.client.put(
-                '/api/v2/admin/category',
-                data=json.dumps(new_category),
+                '/api/v2/parcels',
+                data=json.dumps(new_parcel),
                 content_type='application/json',
                 headers=headers
             )
-
-    def test_add_new_category(self):
-        self.category["category_type"]
-        response = self.category["category_type"]
-        # data = json.loads(response.data.decode())
-        self.assertTrue("category already exists", response)
 
     def test_admin_can_update_parcel_status(self):
             update = {
@@ -96,3 +81,56 @@ class TestParcel(BaseTestCase):
             )
             # self.assertIn(b'Parcel updated successfully', res.data)
 
+    def test_can_fetch_a_single_parcel(self):
+        res2 = self.client.get('/api/v2/parcels/1', data=json.dumps(self.user), content_type='application/json')
+        self.assertTrue(res2.data)
+
+    def test_can_add_update_status(self):
+        res = self.client.post(
+            '/api/v2/auth/login',
+            data=json.dumps(self.user),
+            content_type='application/json'
+        )
+        parcel = dict(
+            status_type='delivered'
+        )
+
+        data = json.loads(res.data)
+        token = data.get('token')
+        headers = {'Authorization': f'Bearer {token}'}
+
+        res2 = self.client.put(
+            '/api/v2/parcels/1/status',
+            data=json.dumps(parcel),
+            content_type='application/json',
+            headers=headers
+        )
+        # self.assertIn(b'message', res2.data)
+
+    def test_can_fetch_all_products(self):
+
+            response = self.client.get(
+                '/api/v2/parcels',
+                content_type='application/json'
+            )
+            self.assertTrue(response.data)
+
+    def test_invalid_parcel_atrributes(self):
+            self.parcel['weight'] = 'Foil paper'
+            res = self.client.post(
+                '/api/v2/auth/login',
+                data=json.dumps(self.user),
+                content_type='application/json'
+            )
+
+            data = json.loads(res.data)
+            token = data.get('token')
+            headers = {'Authorization': f'Bearer {token}'}
+
+            res2 = self.client.post(
+                '/api/v2/parcels',
+                data=json.dumps(self.parcel),
+                content_type='application/json',
+                headers=headers
+            )
+            # self.assertIn(b'weight must be intergers', res2.data)

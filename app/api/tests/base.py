@@ -7,7 +7,7 @@ from app.api.models.parcels import Parcel
 from app.api.database.db_config import DBconnect
 
 
-class BaseTestCase(unittest.TestCase):  
+class BaseTestCase(unittest.TestCase):   # pragma: no cover
 
     def create_app(self):
         """
@@ -42,7 +42,7 @@ class BaseTestCase(unittest.TestCase):
         return self.client().post('api/v2/auth/signup', data=user_data)
 
     def login_user(self, name="ivan", password="andela1202"):
-        """This method helps log in a test user."""
+        """This method helps login a test user."""
         user_data = {
             'name': name,
             'password': password
@@ -51,7 +51,7 @@ class BaseTestCase(unittest.TestCase):
 
     def signup_user(self, username, email, password, role):
         """
-        Method for registering a user
+        Method for signup a user
         """
         return self.client.post('api/v2/auth/signup', data=json.dumps(dict(
                                 username=username,
@@ -70,7 +70,4 @@ class BaseTestCase(unittest.TestCase):
                 with DBconnect() as cursor:
 
                     cursor.execute("DROP TABLE IF EXISTS users CASCADE")
-                    cursor.execute("DROP TABLE IF EXISTS carrier CASCADE")
-                    cursor.execute("DROP TABLE IF EXISTS category CASCADE")
-                    cursor.execute("DROP TABLE IF EXISTS status CASCADE")
                     cursor.execute("DROP TABLE IF EXISTS parcels CASCADE")
