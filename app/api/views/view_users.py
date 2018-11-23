@@ -20,14 +20,14 @@ class ViewUser:
 
     @app.route('/', methods=['GET'])
     def home():
-        return jsonify({"message": "Welcome to SendIT API v2. Please [Signup] for an account , or [Login]"})
+        return jsonify({"message": "Welcome to SendIT API v2"})
 
     @app.route('/api/v2/auth/signup', methods=['GET', 'POST'])
     @swag_from('../docs/signup.yml')
     def signup():
 
-        """Welcome to SendIT API v2. Please [Signup] for an account , or [Login]
-        Add a user to the app through the Signup
+        """
+        user to the app through the Signup
         """
         # DBconnect.
         if request.method == 'POST':
@@ -57,9 +57,6 @@ class ViewUser:
                 logging.error(e)
                 return jsonify({'message': str(e)}), 500
 
-        elif request.method == 'GET':  # pragma: no cover
-            return jsonify({'message': 'Please copy this sites url to your postman and test'}),200  # pragma: no cover
-
     @app.route('/api/v2/auth/login', methods=['GET', 'POST'])
     @swag_from('../docs/login.yml')
     def user_login():
@@ -74,7 +71,7 @@ class ViewUser:
         try:
            
             with DBconnect() as cursor:
-                if not str.isalpha(username) or not Validator.password(password):
+                if not str.isalpha(username):
                     return jsonify({"message": "Invalid input!!"})
                 query = "SELECT user_id, username, password FROM users WHERE username = '%s' AND password = '%s'" % (username, password)
                 cursor.execute(query, (username, password))
