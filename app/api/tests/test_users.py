@@ -65,6 +65,7 @@ class TestUser(BaseTestCase):
             Tests if User is signing with used email
         """
         self.signup_user("ivan", "ivan@yahoo.com", "andela1202", "user")
+        res = self.client.post('/api/v2/auth/signup', data=json.dumps(self.user), content_type='application/json')
         response = self.signup_user("ivan", "ivan@yahoo.com", "andela1202", "user")
         data = json.loads(response.data.decode())
         self.assertEqual(response.status_code, 200)
@@ -80,15 +81,11 @@ class TestUser(BaseTestCase):
             data = json.loads(response.data.decode())
             self.assertNotEqual(data.get('message'), "User already Exists")
 
-    # def test_login_user():
-    #     """
-    #     register a test user, then log them in
-    #     """
-    #     result = self.login_user()
-    #     # obtain the access token
-    #     access_token = json.loads(result.data.decode())['access_token']
-
-    #     res = self.client.post(
-    #         '/api/v2/auth/login',
-    #         headers=dict(Authorization="Bearer " + access_token),
-    #         data=self.user)
+    def test_login_user(self):
+            res = self.client.post(
+                    '/api/v2/auth/login',
+                    data=json.dumps(self.user),
+                    content_type='application/json'
+                )
+            self.assertTrue(b'Invalid credentials', res.data)
+            self.assertIn(b'\n  "message": "relation \\"users\\" does not exist\\nLINE 1: SELECT user_id, username, password FROM users WHERE username...\\n', res.data)

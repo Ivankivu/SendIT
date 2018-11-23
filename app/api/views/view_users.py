@@ -19,14 +19,14 @@ Swagger(app)
 class ViewUser:
 
     @app.route('/', methods=['GET'])
-    def Home():
+    def home():
         return jsonify({"message": "Welcome to SendIT API v2. Please [Signup] for an account , or [Login]"})
 
     @app.route('/api/v2/auth/signup', methods=['GET', 'POST'])
     @swag_from('../docs/signup.yml')
     def signup():
 
-        """
+        """Welcome to SendIT API v2. Please [Signup] for an account , or [Login]
         Add a user to the app through the Signup
         """
         # DBconnect.
@@ -70,22 +70,22 @@ class ViewUser:
         """
         user login with valid credentials after Signup
         """
-        data = request.get_json(force=True)
+        data = request.get_json()
 
         username = data['username']
         password = data['password']
 
         try:
             if Validator.is_empty(username):
-                return jsonify({'message': 'Empty values. Please enter valid credentials'})
+                return jsonify({'message': 'Invalid credentials'})
             if Validator.password(password):
-                return jsonify({'message': 'Invalid entry. Please enter a valid username'})
+                return jsonify({'message': 'Invalid credentials'})
             with DBconnect() as cursor:
                 query = "SELECT user_id, username, password FROM users WHERE username = '%s' AND password = '%s'" % (username, password)
                 cursor.execute(query, (username, password))
                 response = cursor.fetchone()
                 if not response:
-                    return jsonify({"error": "Invalid credentials"}), 400
+                    return jsonify({"message": "Invalid credentials"}), 400
                 access_token = create_access_token(identity=username)
                 return jsonify(access_token=access_token, message="Login Successful"), 200
         except Exception as e:

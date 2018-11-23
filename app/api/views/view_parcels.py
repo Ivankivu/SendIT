@@ -1,9 +1,7 @@
 import datetime
 import logging
 from flask_jwt_extended import (
-    JWTManager, jwt_required, create_access_token,
-    get_jwt_identity
-)
+    JWTManager, jwt_required, create_access_token, get_jwt_identity)
 from flask import Flask, jsonify, request, Response, json, make_response
 from app import app
 from app.api.models.parcels import Parcel
@@ -101,6 +99,8 @@ class Viewparcels:
         except Exception as e:
             logging.error(e)
             return make_response(jsonify({'message': str(e)}), 500)
+
+    
 
     # @app.route('/api/v2/admin/parcels', methods=['GET'])
     # @jwt_required
