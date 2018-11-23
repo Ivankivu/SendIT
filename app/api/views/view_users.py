@@ -36,8 +36,6 @@ class ViewUser:
             email = data["email"]
             password = data["password"]
 
-            
-
             sql = '''INSERT INTO  users(username, email, password, role) VALUES(%s, %s, %s, %s)'''
 
             try:
@@ -45,9 +43,8 @@ class ViewUser:
                     cursor.execute("CREATE TABLE IF NOT EXISTS users(user_id SERIAL PRIMARY KEY, username VARCHAR(35) UNIQUE, email VARCHAR(100) NOT NULL UNIQUE, password VARCHAR(240) NOT NULL, role VARCHAR(23) NOT NULL DEFAULT 'user', registered_at TIMESTAMP DEFAULT NOW());")
                     cursor.execute("CREATE TABLE IF NOT EXISTS parcels(parcel_id SERIAL PRIMARY KEY, parcel_name VARCHAR(100) NOT NULL, weight INTEGER, orderDate TIMESTAMP DEFAULT NOW(), source VARCHAR(50) NOT NULL, destination VARCHAR(50) NOT NULL, location VARCHAR(50), status VARCHAR(15), username VARCHAR(35) REFERENCES users(username));")
 
-                    res = Validator.validate3(username, email, password)
-                    if res:
-                        return res
+                    if not str.isalpha(username) or Validator.is_email(email):
+                        return jsonify({"message": "Invalid input!!"})
                     
                     cursor.execute("SELECT * FROM users WHERE username = '%s'" % username)
                     response = cursor.fetchone()
@@ -75,11 +72,10 @@ class ViewUser:
         password = data['password']
 
         try:
-            if Validator.is_empty(username):
-                return jsonify({'message': 'Invalid credentials'})
-            if Validator.password(password):
-                return jsonify({'message': 'Invalid credentials'})
+           
             with DBconnect() as cursor:
+                if not str.isalpha(username) or not Validator.password(password):
+                    return jsonify({"message": "Invalid input!!"})
                 query = "SELECT user_id, username, password FROM users WHERE username = '%s' AND password = '%s'" % (username, password)
                 cursor.execute(query, (username, password))
                 response = cursor.fetchone()
