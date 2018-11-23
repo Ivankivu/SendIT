@@ -14,11 +14,6 @@ class Validator:  # pragma: no cover
         if not str.isalpha(item) or not str.isalpha(item2) or not not str.isalpha(item3):
             return jsonify({"message": "Invalid input!!"})
 
-    def is_empty(str):
-        if str == 0:
-            return True
-        return False
-
     def validate_name(name):
         if name and len(name) < 3:
             return True
@@ -43,14 +38,15 @@ class Validator:  # pragma: no cover
     def password(item):
         if not item:
             raise Exception("Field can't be empty")
-        if len(item) < 8 or len(item) > 12:
+        if len(item) < 6 or len(item) > 12:
             raise Exception(
-                "Weak password. Password must be 8 characters long")
+                "Weak password. Password must be 6 characters long")
         if not re.search(r'[0-9]', item):
             raise Exception(
                 'Weak password. Password should have atleast one integer')
-        if item.isupper() or item.isdigit():
+        if item.isdigit():
             raise Exception('Very Weak password')
+            # item.isupper() or 
 
     def get_timestamp():
         return datetime.now().strftime(("%Y-%m-%d %H:%M:%S"))

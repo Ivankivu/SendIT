@@ -59,6 +59,8 @@ class TestUser(BaseTestCase):
         self.user['password'] = ""
         res = self.client.post('/api/v2/auth/login', data=json.dumps(self.user), content_type='application/json')
         self.assertIn(b'Field can\'t be empty', res.data)
+        # data = json.loads(res.data.decode())
+        # self.assertEqual({"message": "Invalid input!!"}, res.data), 400
 
     def test_signup_with_existing_username(self):
         """
