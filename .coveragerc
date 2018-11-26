@@ -15,5 +15,6 @@ omit =
     venv/*
     app/api/database/tables.py*
     app/api/database/db_config.py*
+    app/api/tests/test_parcels.py
+    app/api/tests/test_users.py
     setup.py
-       

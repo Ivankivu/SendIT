@@ -72,6 +72,8 @@ class Viewparcels:
                 cursor.execute(sql)
                 # cursor.execute("select * from parcels where parcel_id='%s' and username = '%s'" %(parcel_id, username))
                 return jsonify({"message": cursor.fetchone()}), 201
+
+                
         except Exception as e:
             logging.error(e)
             return jsonify({'message': str(e)}), 500
@@ -137,28 +139,32 @@ class Viewparcels:
             logging.error(e)
             return jsonify({'message': str(e)}), 500
 
-    @app.route('/api/v2/users/parcels/<int:parcel_id>/status', methods=['GET', 'PUT'])
+    @app.route('/api/v2/admin/parcels/<int:parcel_id>/status', methods=['GET', 'PUT'])
     # @jwt_required
-    def admin_change_parcel_status():
+    def admin_change_parcel_status(parcel_id):
         """
         this method handels how an admin changes status of the parcel delivery
         """
         data = request.get_json()
-        status_type = data['status_type']
+        status = data.get('status')
 
-        sql = "UPDATE parcels SET status_type='%s' WHERE parcel_id = '%s'" % (status_type, parcel_id)
+        sql = "UPDATE parcels SET status='%s' WHERE parcel_id = '%s'" % (status, parcel_id)
         try:
             with DBconnect() as cursor:
-                cursor.execute(sql, (status_type, parcel_id,))
-                # cursor.execute("select * from parcels")
-                return jsonify({"message": cursor.fetchone()}), 201
+                cursor.execute(sql, (status,))
+                cursor.execute("select * from parcels where parcel_id ='{}'".format(parcel_id))
+                cursor.fetchone()
+                if cursor.fetchone():
+                    return jsonify({"message": "Failed to change parcel status"}), 404
+                return jsonify({"message": "status updated!!"}), 201
+                
         except Exception as e:
             logging.error(e)
             return jsonify({'message': str(e)}), 500
 
     @app.route('/api/v2/parcels/<int:parcel_id>/present_location', methods=['GET', 'PUT'])
     # @jwt_required
-    def admin_update_present_location():
+    def admin_update_present_location(parcel_id):
         """
         this method handels how an admin changes present_location of the parcel
         """
@@ -168,27 +174,8 @@ class Viewparcels:
         sql = "UPDATE parcels SET present_location='%s' WHERE parcel_id = '%s'" % (present_location, parcel_id)
         try:
             with DBconnect() as cursor:
-                cursor.execute(sql, (present_location, parcel_id,))
-                # cursor.execute("select * from parcels")
-                return jsonify({"message": cursor.fetchone()}), 201
-        except Exception as e:
-            logging.error(e)
-            return jsonify({'message': str(e)}), 500
-
-    @app.route('/api/v2/parcels/<int:parcel_id>/status', methods=['GET', 'PUT'])
-    # @jwt_required
-    def admin_change_parcel_status():
-        """
-        this method handels how an admin changes status of the parcel delivery
-        """
-        data = request.get_json()
-        status_type = data['status_type']
-
-        sql = "UPDATE parcels SET status_type='%s' WHERE parcel_id = '%s'" % (status_type, parcel_id)
-        try:
-            with DBconnect() as cursor:
-                cursor.execute(sql, (status_type, parcel_id,))
-                # cursor.execute("select * from parcels")
+                cursor.execute(sql, (present_location,))
+                cursor.execute("select * from parcels where parcel_id ='{}'".format(parcel_id))
                 return jsonify({"message": cursor.fetchone()}), 201
         except Exception as e:
             logging.error(e)
